@@ -1,23 +1,56 @@
 {
-  "name": "highbit-web",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@next/font": "13.1.6",
-    "@types/node": "18.11.19",
-    "@types/react": "18.0.27",
-    "@types/react-dom": "18.0.10",
-    "eslint": "8.33.0",
-    "eslint-config-next": "13.1.6",
-    "next": "13.1.6",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "4.9.5"
-  }
+ "name": "highbit-web",
+ "version": "0.1.0",
+ "private": true,
+ "scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint",
+  "lint:custom": "eslint src/** --ext .ts,.tsx",
+  "lint:fix": "eslint src/** --ext .ts,.tsx --fix",
+  "prettier": "prettier --write src/**/*.{ts,tsx}",
+  "storybook": "start-storybook -p 6006",
+  "build-storybook": "build-storybook",
+  "test": "vitest",
+  "coverage": "vitest run --coverage"
+ },
+ "dependencies": {
+  "@next/font": "13.1.6",
+  "@types/node": "18.11.19",
+  "@types/react": "18.0.27",
+  "@types/react-dom": "18.0.10",
+  "eslint": "8.33.0",
+  "eslint-config-next": "13.1.6",
+  "next": "13.1.6",
+  "react": "18.2.0",
+  "react-dom": "18.2.0",
+  "typescript": "4.9.5"
+ },
+ "devDependencies": {
+  "@babel/core": "^7.20.12",
+  "@storybook/addon-actions": "^6.5.16",
+  "@storybook/addon-essentials": "^6.5.16",
+  "@storybook/addon-interactions": "^6.5.16",
+  "@storybook/addon-links": "^6.5.16",
+  "@storybook/builder-webpack5": "^6.5.16",
+  "@storybook/manager-webpack5": "^6.5.16",
+  "@storybook/react": "^6.5.16",
+  "@storybook/testing-library": "^0.0.13",
+  "@testing-library/react": "13.4.0",
+  "@typescript-eslint/eslint-plugin": "^5.50.0",
+  "@vitejs/plugin-react": "3.1.0",
+  "autoprefixer": "^10.4.13",
+  "babel-loader": "^8.3.0",
+  "eslint-config-prettier": "^8.6.0",
+  "eslint-plugin-prettier": "^4.2.1",
+  "eslint-plugin-storybook": "^0.6.10",
+  "eslint-plugin-tailwindcss": "^3.8.3",
+  "jsdom": "21.1.0",
+  "postcss": "^8.4.21",
+  "prettier": "2.8.3",
+  "prettier-plugin-tailwindcss": "^0.2.2",
+  "tailwindcss": "^3.2.4",
+  "vitest": "0.28.4"
+ }
 }

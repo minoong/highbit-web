@@ -1,3 +1,50 @@
 {
-  "extends": "next/core-web-vitals"
+ "extends": [
+  "plugin:@typescript-eslint/recommended",
+  "next",
+  "plugin:storybook/recommended",
+  "plugin:tailwindcss/recommended",
+  "plugin:prettier/recommended"
+ ],
+ "rules": {
+  "no-unused-vars": "off",
+  "@typescript-eslint/no-unused-vars": ["error"],
+  "import/order": [
+   "error",
+   {
+    "groups": ["type", "builtin", "external", "internal", "parent", "sibling", "index", "unknown"],
+    "pathGroups": [
+     {
+      "pattern": "react*",
+      "group": "external",
+      "position": "before"
+     },
+     {
+      "pattern": "@hooks/*",
+      "group": "internal",
+      "position": "after"
+     },
+     {
+      "pattern": "@utils/*",
+      "group": "internal",
+      "position": "after"
+     },
+     {
+      "pattern": "@pages/*",
+      "group": "internal",
+      "position": "after"
+     },
+     {
+      "pattern": "@components/*",
+      "group": "internal",
+      "position": "after"
+     }
+    ],
+    "alphabetize": {
+     "order": "asc",
+     "caseInsensitive": true
+    }
+   }
+  ]
+ }
 }
