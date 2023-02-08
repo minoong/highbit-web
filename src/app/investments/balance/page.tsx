@@ -1,5 +1,12 @@
+import { Counter } from '~/features/counter/Counter'
+
 function BalancePage() {
- return <div>BalancePage</div>
+ return (
+  <div>
+   BalancePage
+   <Counter />
+  </div>
+ )
 }
 
 export default BalancePage
