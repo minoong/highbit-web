@@ -1,5 +1,6 @@
 import GlobalNav from '~/components/GlobalNav/GlobalNav'
 import ReactQueryProvider from '~/components/ReactQueryProiver/ReactQueryProvider'
+import ReduxProvider from '~/components/ReduxProvider/ReduxProvider'
 import './globals.css'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -11,13 +12,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       */}
    <head />
    <body>
-    <ReactQueryProvider>
-     <div className="flex min-h-screen w-full min-w-[1400px] flex-col bg-slate-600">
-      <GlobalNav />
-      <main className="flex-auto bg-red-200 px-4 pt-[68px]">{children}</main>
-      <footer>footer</footer>
-     </div>
-    </ReactQueryProvider>
+    <ReduxProvider>
+     <ReactQueryProvider>
+      <div className="flex min-h-screen w-full min-w-[1400px] flex-col bg-slate-600">
+       <GlobalNav />
+       <main className="flex-auto bg-red-200 px-4 pt-[68px]">{children}</main>
+       <footer>footer</footer>
+      </div>
+     </ReactQueryProvider>
+    </ReduxProvider>
    </body>
   </html>
  )
