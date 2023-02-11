@@ -10,10 +10,18 @@ type FooterMenuProps = PropsWithChildren<ComponentProps<'dl'>> & {
 }
 
 function FooterMenuItem(props: FooterItemProps) {
- const { children, className = 'hover:underline', ...rest } = props
+ const { children, className = '', ...rest } = props
 
  return (
-  <Link {...rest} className={className}>
+  <Link
+   {...rest}
+   className={`${className} inline-block ease-in-out after:block after:scale-x-0 after:border-b after:border-b-[#093687]
+   after:transition
+   after:duration-100
+   after:content-['']
+   hover:after:scale-x-100
+   `}
+  >
    {children}
   </Link>
  )
@@ -31,7 +39,7 @@ function FooterMenuGroup(props: FooterMenuProps) {
   <dl {...rest}>
    <dt className="mb-3 font-bold text-[#333]">{title}</dt>
    {items.map((item, index) => (
-    <dd key={index} className="py-1">
+    <dd key={index} className="w-fit py-1">
      {item}
     </dd>
    ))}
