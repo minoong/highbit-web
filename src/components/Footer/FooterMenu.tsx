@@ -47,7 +47,7 @@ function FooterMenuGroup(props: FooterMenuProps) {
  )
 }
 
-FooterMenuItem.displayName = 'FooterMenu.Group'
+FooterMenuGroup.displayName = 'FooterMenu.Group'
 FooterMenuItem.displayName = 'FooterMenu.Item'
 
 export const FooterComponent = { Group: FooterMenuGroup, Item: FooterMenuItem }
