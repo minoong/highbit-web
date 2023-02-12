@@ -15,9 +15,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
    <body>
     <ReduxProvider>
      <ReactQueryProvider>
-      <div className="flex min-h-screen w-full min-w-[1400px] flex-col bg-slate-600">
+      <div className="flex min-h-screen w-full min-w-[1400px] flex-col">
        <GlobalNav />
-       <main className="flex-auto bg-red-200 px-4 pt-[68px]">{children}</main>
+       <main className="m-auto flex-auto px-4 pt-[68px]">{children}</main>
        <Footer />
       </div>
      </ReactQueryProvider>

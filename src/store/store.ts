@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from '~/features/counter/counterSlice'
+import noticeReducer from '~/features/notice/noticeSlice'
 
 export const store = configureStore({
- reducer: { counter: counterReducer },
+ reducer: { counter: counterReducer, notice: noticeReducer },
 })
 
 export type RootState = ReturnType<typeof store.getState>
