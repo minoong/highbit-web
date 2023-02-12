@@ -9,8 +9,8 @@ export function TableRow(props: Props) {
 
  return (
   <tr
-   className={`bg-white odd:bg-white even:bg-gray-50 ${hoverable ? 'hover:bg-[#D2DFF3]' : ''} ${
-    striped ? 'odd:bg-[##F9FAFB]' : ''
+   className={`bg-white odd:bg-white ${hoverable ? 'hover:bg-[#D2DFF3]' : ''} ${
+    striped ? 'even:bg-gray-50' : ''
    } ${className}`}
    {...rest}
   >

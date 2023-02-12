@@ -4,9 +4,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 import GlobalNavLink from '~/components/GlobalNav/GlobalNavLink'
+import { clear } from '~/features/notice/noticeSlice'
+import { useAppDispatch } from '~/hooks'
 
 function GlobalNav() {
  const pathname = usePathname()
+ const dispatch = useAppDispatch()
 
  return (
   <header className="fixed z-50 w-full select-none bg-[#093687]">
@@ -35,7 +38,11 @@ function GlobalNav() {
        </GlobalNavLink>
       </li>
       <li>
-       <GlobalNavLink path="/service_center/notice" matched={pathname === '/service_center/notice'}>
+       <GlobalNavLink
+        path="/service_center/notice"
+        matched={pathname === '/service_center/notice'}
+        onClick={() => dispatch(clear())}
+       >
         고객센터
        </GlobalNavLink>
       </li>
