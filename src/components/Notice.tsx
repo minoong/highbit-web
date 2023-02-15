@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Pagination from '~/components/Pagination/Pagination'
 import { moveOffset } from '~/features/notice/noticeSlice'
 import { useAppDispatch, useAppSelector } from '~/hooks'
@@ -14,6 +16,7 @@ function Notice() {
   keepPreviousData: true,
  })
 
+ const pathname = usePathname()
  const currentPage = page
 
  return (
@@ -33,7 +36,11 @@ function Notice() {
      {data?.map((row) => (
       <Table.Row key={row.id}>
        <Table.Cell className="text-right">{row.id}</Table.Cell>
-       <Table.Cell>{row.title}</Table.Cell>
+       <Table.Cell>
+        <Link href={`${pathname}/${row.id}`} className="hover:underline">
+         {row.title}
+        </Link>
+       </Table.Cell>
        <Table.Cell className="text-right">{row.userId}</Table.Cell>
       </Table.Row>
      ))}
