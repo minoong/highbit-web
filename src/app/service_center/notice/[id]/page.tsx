@@ -1,7 +1,8 @@
 import MarkdownPreview from '~/components/MarkdownPreview/MarkdownPreview'
+import { API } from '~/constants/config'
 
 async function getData() {
- const res = await fetch('http://localhost:3000/api/hello')
+ const res = await fetch(`${API}/hello`, { cache: 'no-store' })
 
  if (!res.ok) {
   throw new Error('Failed to fetch data')
