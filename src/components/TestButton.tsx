@@ -6,6 +6,7 @@ import { marketSelected } from '~/features/marketInfo/marketInfoSlice'
 import { marketsInvoke } from '~/features/markets/marketsSlice'
 import { useAppDispatch, useAppSelector } from '~/hooks'
 import useMarketsQuery from '~/hooks/queries/useMarketsQuery'
+import useUpbit from '~/hooks/useUpbit.websocket'
 
 const Blocked = styled.div`
  color: red;
@@ -24,6 +25,8 @@ function TestButton() {
   },
  })
 
+ const { socketData } = useUpbit(markets, 'ticker')
+
  return (
   <Blocked>
    TestButton #{count}
@@ -34,6 +37,11 @@ function TestButton() {
     <button type="button" onClick={() => setCount((prev) => prev - 1)}>
      -1
     </button>
+    {socketData.map((data) => (
+     <div key={data.code}>
+      {data.code}/{data.trade_price}
+     </div>
+    ))}
     {markets.map((market) => (
      <p key={market.market} onClick={() => dispatch(marketSelected(market.market))}>
       {market.korean_name}/{market.market}
