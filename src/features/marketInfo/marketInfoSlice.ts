@@ -1,4 +1,6 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
+import type { RootState } from '~/store/store'
+import { createSelector } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
 type KRW = 'KRW'
@@ -33,6 +35,13 @@ export const marketInfoSlice = createSlice({
 })
 
 export const { marketSelected, marketLocation } = marketInfoSlice.actions
+
+const selectSelectedMarket = (state: RootState) => state.marketInfo.selected
+
+export const selectedMarketSelector = createSelector(
+ selectSelectedMarket,
+ (selectedMarket) => selectedMarket || 'KRW-BTC',
+)
 
 const marketInfoReducer = marketInfoSlice.reducer
 
