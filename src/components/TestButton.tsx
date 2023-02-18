@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { styled } from 'styled-components'
+import { marketSelected } from '~/features/marketInfo/marketInfoSlice'
 import { marketsInvoke } from '~/features/markets/marketsSlice'
 import { useAppDispatch, useAppSelector } from '~/hooks'
 import useMarketsQuery from '~/hooks/queries/useMarketsQuery'
@@ -33,7 +34,11 @@ function TestButton() {
     <button type="button" onClick={() => setCount((prev) => prev - 1)}>
      -1
     </button>
-    {JSON.stringify(markets)}
+    {markets.map((market) => (
+     <p key={market.market} onClick={() => dispatch(marketSelected(market.market))}>
+      {market.korean_name}/{market.market}
+     </p>
+    ))}
    </div>
   </Blocked>
  )

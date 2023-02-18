@@ -6,14 +6,16 @@ interface Props {
  matched: boolean
  onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
  children: React.ReactNode
+ legacyBehavior?: boolean
 }
 
 function GlobalNavLink(props: Props) {
- const { path, matched, onClick, children } = props
+ const { path, matched, onClick, children, legacyBehavior = false } = props
 
  return (
   <Link
    href={path}
+   legacyBehavior={legacyBehavior}
    {...(onClick && { onClick })}
    className={`flex items-center gap-1 font-bold tracking-widest transition-all ease-out hover:text-white ${
     matched ? 'text-white' : 'text-gray-400'

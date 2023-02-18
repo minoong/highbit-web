@@ -1,15 +1,26 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
+import { shallowEqual } from 'react-redux'
 import GlobalNavLink from '~/components/GlobalNav/GlobalNavLink'
+import { selectedMarketSelector } from '~/features/marketInfo/marketInfoSlice'
 import { clear } from '~/features/notice/noticeSlice'
-import { useAppDispatch } from '~/hooks'
+import { useAppDispatch, useAppSelector } from '~/hooks'
 
 function GlobalNav() {
  const pathname = usePathname()
  const dispatch = useAppDispatch()
+ const router = useRouter()
+ const selectedMarket = useAppSelector(selectedMarketSelector, shallowEqual)
+
+ const handleExchangePageLink = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  e.preventDefault()
+  e.stopPropagation()
+
+  router.replace(`/exchange?code=${selectedMarket}`)
+ }
 
  return (
   <header className="fixed z-50 w-full select-none bg-[#093687]">
@@ -23,7 +34,7 @@ function GlobalNav() {
      </Link>
      <ul className="ml-20 flex items-center space-x-10">
       <li>
-       <GlobalNavLink path="/exchange" matched={pathname === '/exchange'}>
+       <GlobalNavLink path="/exchange" matched={pathname === '/exchange'} onClick={handleExchangePageLink}>
         거래소
        </GlobalNavLink>
       </li>
