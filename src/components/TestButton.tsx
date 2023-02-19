@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { styled } from 'styled-components'
-import { marketSelected } from '~/features/marketInfo/marketInfoSlice'
 import { marketsInvoke } from '~/features/markets/marketsSlice'
+import { tickersInvoke, tickersUpdate } from '~/features/tickers/tickersSlice'
 import { useAppDispatch, useAppSelector } from '~/hooks'
 import useMarketsQuery from '~/hooks/queries/useMarketsQuery'
+import useTickersQuery from '~/hooks/queries/useTickersQuery'
 import useUpbit from '~/hooks/useUpbit.websocket'
 
 const Blocked = styled.div`
@@ -17,15 +18,28 @@ function TestButton() {
 
  const [count, setCount] = useState(0)
  const markets = useAppSelector((state) => state.markets.markets)
+ const tickers = useAppSelector((state) => state.tickers.tickers)
 
  useMarketsQuery({
   suspense: true,
   onSuccess: (data) => {
    dispatch(marketsInvoke(data))
   },
+  staleTime: Infinity,
+ })
+
+ useTickersQuery({
+  suspense: true,
+  onSuccess: (data) => {
+   dispatch(tickersInvoke(data))
+  },
  })
 
  const { socketData } = useUpbit(markets, 'ticker')
+
+ useEffect(() => {
+  dispatch(tickersUpdate(socketData))
+ }, [dispatch, socketData])
 
  return (
   <Blocked>
@@ -37,16 +51,15 @@ function TestButton() {
     <button type="button" onClick={() => setCount((prev) => prev - 1)}>
      -1
     </button>
-    {socketData.map((data) => (
-     <div key={data.code}>
-      {data.code}/{data.trade_price}
-     </div>
-    ))}
-    {markets.map((market) => (
-     <p key={market.market} onClick={() => dispatch(marketSelected(market.market))}>
-      {market.korean_name}/{market.market}
-     </p>
-    ))}
+    <p>#{tickers.filter((v) => v.market.startsWith('KRW-')).length}</p>
+    {tickers
+     .filter((v) => v.market.startsWith('KRW-'))
+     .sort((a, b) => b.signed_change_rate - a.signed_change_rate)
+     .map((ticker) => (
+      <div key={ticker.market}>
+       {ticker.market} | {ticker.trade_price}
+      </div>
+     ))}
    </div>
   </Blocked>
  )
