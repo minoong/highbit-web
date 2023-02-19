@@ -1,6 +1,6 @@
 import type { AskBid, Change } from '~/types/apis/common'
 
-export type Ticker = {
+export type TickerSocket = {
  type: string
  code: string
  opening_price: number

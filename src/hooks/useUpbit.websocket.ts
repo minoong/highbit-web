@@ -1,13 +1,13 @@
 import type { Market } from '~/types/apis/market'
 import type { Orderbook } from '~/types/apis/orderbook.socket'
-import type { Ticker } from '~/types/apis/ticker.socket'
+import type { TickerSocket } from '~/types/apis/ticker.socket'
 import type { Trade } from '~/types/apis/trade.socket'
 import { cloneDeep, throttle } from 'lodash'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 type RequestType = 'ticker' | 'orderbook' | 'trade'
 
-type ResultInfer<T> = T extends 'ticker' ? Ticker : T extends 'orderbook' ? Orderbook : Trade
+type ResultInfer<T> = T extends 'ticker' ? TickerSocket : T extends 'orderbook' ? Orderbook : Trade
 
 function socketDataEncoder(socketData: Iterable<number>) {
  const encoder = new TextDecoder('utf-8')
