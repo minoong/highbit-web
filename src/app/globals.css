@@ -10,3 +10,21 @@ body {
  min-height: 100%;
  background-color: #e9ecf1;
 }
+
+.virtualscroll {
+ overflow: hidden;
+ transition: all 1s;
+}
+
+.virtualscroll:hover {
+ overflow: overlay;
+}
+
+.virtualscroll::-webkit-scrollbar {
+ width: 0.5rem;
+}
+
+.virtualscroll::-webkit-scrollbar-thumb {
+ background-color: hsla(0, 0%, 77%, 0.49);
+ border-radius: 100px;
+}
