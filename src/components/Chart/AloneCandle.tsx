@@ -21,7 +21,7 @@ function AloneCandle(props: Props) {
  const yScale = useMemo(() => {
   const { opening, high, low } = data
 
-  const max = Math.max(high - opening, opening, low)
+  const max = Math.max(high - opening, opening - low)
 
   const scale = scaleLinear()
    .domain([opening - max, opening + max])
