@@ -43,6 +43,12 @@ export const selectedMarketSelector = createSelector(
  (selectedMarket) => selectedMarket || 'KRW-BTC',
 )
 
+export const selectedMarketObjectSelector = createSelector(
+ selectSelectedMarket,
+ (state: RootState) => state.markets.markets,
+ (selectedMarket, markets) => markets.filter((market) => market.market === selectedMarket),
+)
+
 const marketInfoReducer = marketInfoSlice.reducer
 
 export default marketInfoReducer
