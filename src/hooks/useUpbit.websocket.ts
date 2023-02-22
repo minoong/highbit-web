@@ -82,6 +82,10 @@ function useUpbit<T extends RequestType>(marketCodes: Market[], type: T) {
  )
 
  useEffect(() => {
+  if (marketCodes.length < 1) {
+   return
+  }
+
   function connect() {
    socket.current = new WebSocket('wss://api.upbit.com/websocket/v1')
    socket.current.binaryType = 'arraybuffer'

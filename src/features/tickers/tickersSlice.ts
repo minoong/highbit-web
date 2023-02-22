@@ -11,6 +11,7 @@ export type TickerState = {
   | 'high_price'
   | 'low_price'
   | 'trade_price'
+  | 'prev_closing_price'
   | 'change'
   | 'signed_change_price'
   | 'signed_change_rate'
@@ -35,6 +36,7 @@ export const tickersSlice = createSlice({
      high_price,
      low_price,
      trade_price,
+     prev_closing_price,
      change,
      signed_change_price,
      signed_change_rate,
@@ -45,6 +47,7 @@ export const tickersSlice = createSlice({
      high_price,
      low_price,
      trade_price,
+     prev_closing_price,
      change,
      signed_change_price,
      signed_change_rate,
@@ -61,6 +64,7 @@ export const tickersSlice = createSlice({
      high_price,
      low_price,
      trade_price,
+     prev_closing_price,
      change,
      signed_change_price,
      signed_change_rate,
@@ -72,6 +76,7 @@ export const tickersSlice = createSlice({
      high_price,
      low_price,
      trade_price,
+     prev_closing_price,
      change,
      signed_change_price,
      signed_change_rate,

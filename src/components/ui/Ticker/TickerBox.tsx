@@ -1,10 +1,12 @@
 import type { Market } from '~/types/apis/market'
 import type { Ticker } from '~/types/apis/ticker'
 import Link from 'next/link'
-import React, { useMemo } from 'react'
+import React, { useMemo, useRef } from 'react'
 import Star from '~/assets/svgs/star_fill.svg'
 import AloneCandle from '~/components/Chart/AloneCandle'
 import Price from '~/components/ui/Ticker/Price'
+import { marketSelected } from '~/features/marketInfo/marketInfoSlice'
+import { useAppDispatch } from '~/hooks'
 import { MarketUtils } from '~/utils/marketUtils'
 
 type Props = Pick<Market, 'market' | 'korean_name'> &
@@ -34,6 +36,9 @@ function TickerBox(props: Props) {
   acc_trade_price_24h,
  } = props
 
+ const linkRef = useRef<HTMLAnchorElement>(null)
+ const dispatch = useAppDispatch()
+
  const marketKrwSymbol = useMemo(() => {
   const [krw, symbol] = market.split('-')
 
@@ -42,10 +47,17 @@ function TickerBox(props: Props) {
 
  const currentChange = MarketUtils.getChageColor('text-', change, '[#333333]')
 
+ const handleSelectCoin = (symbol: string) => {
+  dispatch(marketSelected(symbol))
+ }
+
  return (
   <div
    className="flex h-[46px] w-[400px] max-w-[400px] cursor-default flex-wrap items-center bg-white text-xs text-[#333333] hover:bg-[#f4f5f8]"
    aria-hidden
+   onClick={() => {
+    linkRef.current?.click()
+   }}
   >
    <div className="flex w-[26px] justify-center pl-3">
     <Star fill="#DDDDDD" width={15} />
@@ -66,7 +78,16 @@ function TickerBox(props: Props) {
     </svg>
    </div>
    <div className="w-[94px]">
-    <Link className="!cursor-pointer text-xs font-bold hover:underline" href={`/exchange?code=${market}`}>
+    <Link
+     ref={linkRef}
+     className="!cursor-pointer text-xs font-bold hover:underline"
+     href={`/exchange?code=${market}`}
+     onClick={(e) => {
+      e.stopPropagation()
+
+      handleSelectCoin(market)
+     }}
+    >
      {korean_name}
     </Link>
     <div className="text-[6px] font-semibold text-gray-500">{marketKrwSymbol}</div>
