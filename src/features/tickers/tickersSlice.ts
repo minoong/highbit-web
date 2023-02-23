@@ -16,6 +16,7 @@ export type TickerState = {
   | 'signed_change_price'
   | 'signed_change_rate'
   | 'acc_trade_price_24h'
+  | 'acc_trade_volume_24h'
  > &
   Pick<TickerSocket, 'market_warning'>)[]
 }
@@ -41,6 +42,7 @@ export const tickersSlice = createSlice({
      signed_change_price,
      signed_change_rate,
      acc_trade_price_24h,
+     acc_trade_volume_24h,
     }) => ({
      market,
      opening_price,
@@ -52,6 +54,7 @@ export const tickersSlice = createSlice({
      signed_change_price,
      signed_change_rate,
      acc_trade_price_24h,
+     acc_trade_volume_24h,
      market_warning: 'NONE',
     }),
    )
@@ -69,6 +72,7 @@ export const tickersSlice = createSlice({
      signed_change_price,
      signed_change_rate,
      acc_trade_price_24h,
+     acc_trade_volume_24h,
      market_warning,
     }) => ({
      market: code,
@@ -81,6 +85,7 @@ export const tickersSlice = createSlice({
      signed_change_price,
      signed_change_rate,
      acc_trade_price_24h,
+     acc_trade_volume_24h,
      market_warning,
     }),
    )
