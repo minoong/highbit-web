@@ -1,4 +1,5 @@
 import { Suspense } from 'react'
+import CoinHeader from '~/components/ui/CoinHeader/CoinHeader'
 import OrderBookContainer from '~/components/ui/OrderBook/OrderBookContainer'
 import TestButton from '~/components/TestButton'
 
@@ -6,7 +7,7 @@ function ExchangePage() {
  return (
   <div className="m-auto mt-4 grid w-[1410px] grid-cols-[990px_400px] gap-5">
    <div className="flex flex-col gap-2">
-    <div>코인 정보</div>
+    <CoinHeader />
     <div className="h-[500px] bg-white">
      <div>차트</div>
     </div>
