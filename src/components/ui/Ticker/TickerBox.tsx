@@ -5,8 +5,6 @@ import React, { useMemo, useRef } from 'react'
 import Star from '~/assets/svgs/star_fill.svg'
 import AloneCandle from '~/components/Chart/AloneCandle'
 import Price from '~/components/ui/Ticker/Price'
-import { marketSelected } from '~/features/marketInfo/marketInfoSlice'
-import { useAppDispatch } from '~/hooks'
 import { MarketUtils } from '~/utils/marketUtils'
 
 type Props = Pick<Market, 'market' | 'korean_name'> &
@@ -37,7 +35,6 @@ function TickerBox(props: Props) {
  } = props
 
  const linkRef = useRef<HTMLAnchorElement>(null)
- const dispatch = useAppDispatch()
 
  const marketKrwSymbol = useMemo(() => {
   const [krw, symbol] = market.split('-')
@@ -46,10 +43,6 @@ function TickerBox(props: Props) {
  }, [market])
 
  const currentChange = MarketUtils.getChageColor('text-', change, '[#333333]')
-
- const handleSelectCoin = (symbol: string) => {
-  dispatch(marketSelected(symbol))
- }
 
  return (
   <div
@@ -78,14 +71,7 @@ function TickerBox(props: Props) {
     </svg>
    </div>
    <div className="w-[94px]">
-    <Link
-     ref={linkRef}
-     className="!cursor-pointer text-xs font-bold hover:underline"
-     href={`/exchange?code=${market}`}
-     onClick={() => {
-      handleSelectCoin(market)
-     }}
-    >
+    <Link ref={linkRef} className="!cursor-pointer text-xs font-bold hover:underline" href={`/exchange?code=${market}`}>
      {korean_name}
     </Link>
     <div className="text-[6px] font-semibold text-gray-500">{marketKrwSymbol}</div>

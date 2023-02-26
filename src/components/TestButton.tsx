@@ -3,9 +3,10 @@
 import { useEffect, useState } from 'react'
 import { styled } from 'styled-components'
 import TickerBox from '~/components/ui/Ticker/TickerBox'
+import TickerSearch from '~/components/ui/Ticker/TickerSearch'
 import VirtualScroll from '~/components/VirtualScroll/VirtualScroll'
 import { marketsInvoke } from '~/features/markets/marketsSlice'
-import { tickersInvoke, tickersUpdate } from '~/features/tickers/tickersSlice'
+import { tickerSelector, tickersInvoke, tickersUpdate } from '~/features/tickers/tickersSlice'
 import { useAppDispatch, useAppSelector } from '~/hooks'
 import useMarketsQuery from '~/hooks/queries/useMarketsQuery'
 import useTickersQuery from '~/hooks/queries/useTickersQuery'
@@ -18,7 +19,7 @@ function TestButton() {
 
  const [y, setY] = useState<number>(0)
  const markets = useAppSelector((state) => state.markets.markets)
- const tickers = useAppSelector((state) => state.tickers.tickers)
+ const tickers = useAppSelector(tickerSelector)
 
  useMarketsQuery({
   suspense: true,
@@ -46,6 +47,7 @@ function TestButton() {
   <Blocked>
    <div>
     <div className="virtualscroll sticky top-20 h-[993px]" onScroll={(e) => setY(e.currentTarget.scrollTop)}>
+     <TickerSearch />
      <VirtualScroll height={993} itemHeight={46} offsetY={y}>
       {tickers
        .filter((v) => v.market.startsWith('KRW-'))

@@ -1,7 +1,10 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
+import type { RootState } from '~/store/store'
 import type { Ticker } from '~/types/apis/ticker'
 import type { TickerSocket } from '~/types/apis/ticker.socket'
+import { createSelector } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
+import Hangul from 'hangul-js'
 
 export type TickerState = {
  tickers: (Pick<
@@ -19,10 +22,12 @@ export type TickerState = {
   | 'acc_trade_volume_24h'
  > &
   Pick<TickerSocket, 'market_warning'>)[]
+ search: string
 }
 
 const initialState: TickerState = {
  tickers: [],
+ search: '',
 }
 
 export const tickersSlice = createSlice({
@@ -102,10 +107,42 @@ export const tickersSlice = createSlice({
 
    state.tickers = newData
   },
+  tickerSearch: (state, action: PayloadAction<string>) => {
+   state.search = action.payload
+  },
  },
 })
 
-export const { tickersInvoke, tickersUpdate } = tickersSlice.actions
+const selectTicker = (state: RootState) => {
+ const search = state.tickers.search
+ const markets = state.markets.markets
+ const reg = new RegExp(search, 'ig')
+ const korReg = new RegExp(
+  Hangul.d(search, true)
+   .map((s) => s[0])
+   .join(''),
+  'ig',
+ )
+
+ return state.tickers.tickers.filter(
+  (marketData) =>
+   reg.test(markets.find((v) => v.market === marketData.market)?.english_name || '') ||
+   reg.test(marketData.market.split('-')[1]) ||
+   Hangul.disassembleToString(markets.find((v) => v.market === marketData.market)?.korean_name || '').includes(
+    Hangul.disassembleToString(search),
+   ) ||
+   (!Hangul.isComplete(search) &&
+    korReg.test(
+     Hangul.d(markets.find((v) => v.market === marketData.market)?.korean_name || '', true)
+      .map((kor) => kor[0])
+      .join(''),
+    )),
+ )
+}
+
+export const tickerSelector = createSelector(selectTicker, (tickers) => tickers)
+
+export const { tickersInvoke, tickersUpdate, tickerSearch } = tickersSlice.actions
 
 const tickersReducer = tickersSlice.reducer
 
