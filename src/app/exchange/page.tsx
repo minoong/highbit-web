@@ -1,4 +1,5 @@
 import { Suspense } from 'react'
+import { MinutesStockChart } from '~/components/ui/CandleChart/stockChart'
 import CoinHeader from '~/components/ui/CoinHeader/CoinHeader'
 import OrderBookContainer from '~/components/ui/OrderBook/OrderBookContainer'
 import TestButton from '~/components/TestButton'
@@ -9,7 +10,7 @@ function ExchangePage() {
    <div className="flex flex-col gap-2">
     <CoinHeader />
     <div className="h-[500px] bg-white">
-     <div>차트</div>
+     <MinutesStockChart dateTimeFormat="%Y-%m-%d %H:%M" />
     </div>
     <Suspense fallback={<div>Loading...</div>}>
      <OrderBookContainer />

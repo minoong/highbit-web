@@ -20,7 +20,7 @@ export type TickerSocket = {
  acc_trade_price_24h: number
  trade_date: string
  trade_time: string
- trade_timestamp: string
+ trade_timestamp: number
  ask_bid: AskBid
  acc_ask_volume: string
  acc_bid_volume: string
@@ -34,6 +34,6 @@ export type TickerSocket = {
  is_trading_suspended: string
  delisting_date: string
  market_warning: 'NONE' | 'CAUTION'
- timestamp: string
+ timestamp: number
  stream_type: 'SNAPSHOT' | 'REALTIME'
 }

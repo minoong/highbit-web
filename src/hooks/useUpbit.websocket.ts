@@ -127,7 +127,9 @@ function useUpbit<T extends RequestType>(marketCodes: Market[], type: T) {
    }
   }
 
-  connect()
+  if (marketCodes.length > 0 && !socket.current) {
+   connect()
+  }
 
   return () => {
    if (socket.current && socket.current.readyState !== 0) {

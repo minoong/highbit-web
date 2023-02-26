@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import candlesReducer from '~/features/candles/candlesSlice'
 import counterReducer from '~/features/counter/counterSlice'
 import marketInfoReducer from '~/features/marketInfo/marketInfoSlice'
 import marketsReducer from '~/features/markets/marketsSlice'
@@ -12,6 +13,7 @@ export const store = configureStore({
   markets: marketsReducer,
   marketInfo: marketInfoReducer,
   tickers: tickersReducer,
+  candles: candlesReducer,
  },
 })
 
