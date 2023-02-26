@@ -82,9 +82,7 @@ function TickerBox(props: Props) {
      ref={linkRef}
      className="!cursor-pointer text-xs font-bold hover:underline"
      href={`/exchange?code=${market}`}
-     onClick={(e) => {
-      e.stopPropagation()
-
+     onClick={() => {
       handleSelectCoin(market)
      }}
     >

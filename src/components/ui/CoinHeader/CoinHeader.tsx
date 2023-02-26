@@ -1,23 +1,34 @@
 'use client'
 
 import Image from 'next/image'
-import { useMemo } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { useEffect, useMemo } from 'react'
 import { shallowEqual } from 'react-redux'
-import { selectedMarketObjectSelector } from '~/features/marketInfo/marketInfoSlice'
-import { useAppSelector } from '~/hooks'
+import { marketSelected, selectedMarketObjectSelector } from '~/features/marketInfo/marketInfoSlice'
+import { useAppDispatch, useAppSelector } from '~/hooks'
 import { MarketUtils } from '~/utils/marketUtils'
 
 function CoinHeader() {
+ const searchParams = useSearchParams()
  const selectedMarket = useAppSelector(selectedMarketObjectSelector, shallowEqual)
  const ticker = useAppSelector((state) =>
   state.tickers.tickers.find((ticker) => ticker.market === selectedMarket[0].market),
  )
+ const dispatch = useAppDispatch()
  const marketKrwSymbol = useMemo(() => {
   if (selectedMarket.length < 1) return
   const [krw, symbol] = selectedMarket[0].market.split('-')
 
   return `${symbol}/${krw}`
  }, [selectedMarket])
+
+ useEffect(() => {
+  if (!selectedMarket || selectedMarket.length < 1) return
+  const currentSymbol = searchParams?.get('code')
+  if (currentSymbol && currentSymbol !== selectedMarket[0].market) {
+   dispatch(marketSelected(currentSymbol))
+  }
+ }, [dispatch, searchParams, selectedMarket])
 
  if (!ticker || selectedMarket.length < 1) return null
 
@@ -32,6 +43,7 @@ function CoinHeader() {
      alt={selectedMarket[0].korean_name}
      width={24}
      height={24}
+     priority
     />
     <div className="flex items-end gap-1 font-bold">
      <span className="text-xl">{selectedMarket[0].korean_name}</span>
