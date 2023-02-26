@@ -8,7 +8,7 @@ const nextConfig = {
   dirs: ['src'],
  },
  images: {
-  domains: ['static.upbit.com'],
+  domains: ['static.upbit.com', 'i.seadn.io'],
  },
  webpack(config) {
   config.module.rules.push({
