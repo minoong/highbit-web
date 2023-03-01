@@ -23,7 +23,7 @@ export default function dragDropHelper({
 
      const { deltaX, deltaY } = getDeltaAxis(touchEvent.touches[0], moveEvent.touches[0])
 
-     onDragEnd?.(deltaX, deltaY)
+     onDragChange?.(deltaX, deltaY)
     }
 
     const touchEndHandler = (moveEvent: TouchEvent) => {
