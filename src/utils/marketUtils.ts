@@ -30,6 +30,7 @@ export const MarketUtils = {
   return resultString
  },
  getPricePretty: function getPricePretty(price: number) {
+  if (!Number.isInteger(price) && price < 1) return price
   return price < 100 ? price.toFixed(2).toLocaleString() : price.toLocaleString()
  },
  getChageColor: function getChageColor(prefix: string, change: Change, evenColor = 'transparent') {
