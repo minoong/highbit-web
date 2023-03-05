@@ -41,12 +41,19 @@ interface StockChartProps {
  readonly width: number
  readonly ratio: number
  handleMoreFetch: () => Promise<void>
+ pricesDisplayFormat?: (
+  n:
+   | number
+   | {
+      valueOf(): number
+     },
+ ) => string
 }
 
 class StockChart extends React.Component<StockChartProps> {
  private readonly margin = { left: 0, right: 95, top: 0, bottom: 24 }
 
- private readonly pricesDisplayFormat = format('.2f')
+ //  private readonly pricesDisplayFormat = format('.2f')
 
  private readonly xScaleProvider = discontinuousTimeScaleProviderBuilder().inputDateAccessor(
   (d: Entities<Date>) => d.date,
@@ -77,7 +84,15 @@ class StockChart extends React.Component<StockChartProps> {
  }
 
  public render() {
-  const { data: initialData = [], dateTimeFormat = '%d %b', height, ratio, width, handleMoreFetch } = this.props
+  const {
+   data: initialData = [],
+   dateTimeFormat = '%d %b',
+   height,
+   ratio,
+   width,
+   handleMoreFetch,
+   pricesDisplayFormat = format('.1f'),
+  } = this.props
 
   const ema12 = ema()
    .id(1)
@@ -137,19 +152,19 @@ class StockChart extends React.Component<StockChartProps> {
     {/* @ts-ignore */}
     <Chart id={3} height={chartHeight} yExtents={this.candleChartExtents}>
      <XAxis showGridLines showTicks={false} showTickLabel={false} />
-     <YAxis showGridLines tickFormat={this.pricesDisplayFormat} showTicks={false} />
+     <YAxis showGridLines tickFormat={pricesDisplayFormat} showTicks={false} />
      <CandlestickSeries fill={this.openCloseColor} wickStroke={this.openCloseColor} />
      <LineSeries yAccessor={ema26.accessor()} strokeStyle={ema26.stroke()} />
      <CurrentCoordinate yAccessor={ema26.accessor()} fillStyle={ema26.stroke()} />
      <LineSeries yAccessor={ema12.accessor()} strokeStyle={ema12.stroke()} />
      <CurrentCoordinate yAccessor={ema12.accessor()} fillStyle={ema12.stroke()} />
-     <MouseCoordinateY rectWidth={margin.right} displayFormat={this.pricesDisplayFormat} />
+     <MouseCoordinateY rectWidth={margin.right} displayFormat={pricesDisplayFormat} />
      <EdgeIndicator
       itemType="last"
       rectWidth={margin.right}
       fill={this.openCloseColor}
       lineStroke={this.openCloseColor}
-      displayFormat={this.pricesDisplayFormat}
+      displayFormat={pricesDisplayFormat}
       yAccessor={this.yEdgeIndicator}
      />
      <MovingAverageTooltip
@@ -182,17 +197,17 @@ class StockChart extends React.Component<StockChartProps> {
      padding={{ top: 8, bottom: 8 }}
     >
      <XAxis showGridLines gridLinesStrokeStyle="#e0e3eb" showTicks={false} />
-     <YAxis ticks={4} tickFormat={this.pricesDisplayFormat} showTicks={false} />
+     <YAxis ticks={4} tickFormat={pricesDisplayFormat} showTicks={false} />
 
      <MouseCoordinateX displayFormat={timeDisplayFormat} />
-     <MouseCoordinateY rectWidth={margin.right} displayFormat={this.pricesDisplayFormat} />
+     <MouseCoordinateY rectWidth={margin.right} displayFormat={pricesDisplayFormat} />
 
      <ElderRaySeries yAccessor={elder.accessor()} />
 
      <SingleValueTooltip
       yAccessor={elder.accessor()}
       yLabel="Elder Ray"
-      yDisplayFormat={(d: any) => `${this.pricesDisplayFormat(d.bullPower)}, ${this.pricesDisplayFormat(d.bearPower)}`}
+      yDisplayFormat={(d: any) => `${pricesDisplayFormat(d.bullPower)}, ${pricesDisplayFormat(d.bearPower)}`}
       origin={[8, 16]}
      />
     </Chart>

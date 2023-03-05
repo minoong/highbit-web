@@ -1,6 +1,7 @@
 'use client'
 
 import type { Entities } from '~/features/candles/candlesSlice'
+import { format } from 'd3-format'
 import React, { useEffect } from 'react'
 import { fetchUserById } from '~/features/candles/candlesSlice'
 import { useAppDispatch, useAppSelector } from '~/hooks'
@@ -27,6 +28,8 @@ function witchCandleData() {
 
    if (!datasets || datasets.length < 1) return <div>djsfl</div>
 
+   const minPrice = Math.min(...datasets.map(({ low }) => low))
+
    return (
     <OriginalComponent
      key={symbol}
@@ -41,6 +44,13 @@ function witchCandleData() {
       volume,
      }))}
      handleMoreFetch={handleMoreFetch}
+     pricesDisplayFormat={format(
+      !Number.isInteger(minPrice) && minPrice < 1
+       ? `.${String(minPrice).split('.')[1].length}f`
+       : minPrice < 100
+       ? '.2f'
+       : '.1f',
+     )}
     />
    )
   }
