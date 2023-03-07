@@ -5,6 +5,7 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { Suspense } from 'react'
 import { MinutesStockChart } from '~/components/ui/CandleChart/stockChart'
 import CoinHeader from '~/components/ui/CoinHeader/CoinHeader'
+import DailyCoinPrice from '~/components/ui/DailyCoinPrice/DailyCoinPrice'
 import OrderBookContainer from '~/components/ui/OrderBook/OrderBookContainer'
 import TestButton from '~/components/TestButton'
 
@@ -36,7 +37,11 @@ function ExchangePage() {
       <Suspense fallback={<div>Loading...</div>}>
        <OrderBookContainer />
       </Suspense>
-      <article className="h-[436px] bg-white">주문</article>
+      <article className="h-[436px] bg-white">
+       <Suspense fallback={<div>Loading...</div>}>
+        <DailyCoinPrice />
+       </Suspense>
+      </article>
      </div>
      <div className="sticky top-20 h-[993px] bg-white">
       <Suspense fallback={<div>Loading...</div>}>
