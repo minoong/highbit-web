@@ -1,12 +1,13 @@
 'use client'
 
 import { CacheProvider } from '@chakra-ui/next-js'
-import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { ChakraProvider, extendTheme, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react'
 import { Suspense } from 'react'
 import { MinutesStockChart } from '~/components/ui/CandleChart/stockChart'
 import CoinHeader from '~/components/ui/CoinHeader/CoinHeader'
 import DailyCoinPrice from '~/components/ui/DailyCoinPrice/DailyCoinPrice'
 import OrderBookContainer from '~/components/ui/OrderBook/OrderBookContainer'
+import RealTimeTrade from '~/components/ui/RealTimeTrade/RealTimeTrade'
 import TestButton from '~/components/TestButton'
 
 const theme = extendTheme({
@@ -34,17 +35,44 @@ function ExchangePage() {
       <div className="h-[500px] bg-white">
        <MinutesStockChart dateTimeFormat="%Y-%m-%d %H:%M" />
       </div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+       fallback={
+        <div className="h-[700px] w-[490px] animate-pulse">
+         <div className="h-full w-full rounded-sm bg-slate-700"></div>
+        </div>
+       }
+      >
        <OrderBookContainer />
       </Suspense>
       <article className="h-[436px] bg-white">
-       <Suspense fallback={<div>Loading...</div>}>
-        <DailyCoinPrice />
-       </Suspense>
+       <Tabs isFitted>
+        <TabList height="45px">
+         <Tab className="font-extrabold hover:underline">체결</Tab>
+         <Tab className="font-extrabold hover:underline">일별</Tab>
+        </TabList>
+        <TabPanels>
+         <TabPanel padding={0}>
+          <Suspense fallback={<div>Loading...</div>}>
+           <RealTimeTrade />
+          </Suspense>
+         </TabPanel>
+         <TabPanel padding={0}>
+          <Suspense fallback={<div>Loading...</div>}>
+           <DailyCoinPrice />
+          </Suspense>
+         </TabPanel>
+        </TabPanels>
+       </Tabs>
       </article>
      </div>
      <div className="sticky top-20 h-[993px] bg-white">
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+       fallback={
+        <div className="h-[993px] w-[400px] animate-pulse">
+         <div className="h-full w-full rounded-sm bg-slate-700"></div>
+        </div>
+       }
+      >
        <TestButton />
       </Suspense>
      </div>

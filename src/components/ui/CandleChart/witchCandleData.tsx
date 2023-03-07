@@ -26,7 +26,12 @@ function witchCandleData() {
     dispatch(fetchUserById(symbol))
    }
 
-   if (!datasets || datasets.length < 1) return <div>djsfl</div>
+   if (!datasets || datasets.length < 1)
+    return (
+     <div className="h-[500px] w-[990px] animate-pulse">
+      <div className="h-full w-full rounded-sm bg-slate-700"></div>
+     </div>
+    )
 
    const minPrice = Math.min(...datasets.map(({ low }) => low))
 

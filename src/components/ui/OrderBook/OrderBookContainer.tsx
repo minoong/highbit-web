@@ -16,7 +16,13 @@ function OrderBookContainer() {
 
  return (
   <div className="w-[490px]">
-   {socketData.length > 0 && ticker ? <OrderBook data={socketData[0]} /> : <div>loading...</div>}
+   {socketData.length > 0 && ticker ? (
+    <OrderBook data={socketData[0]} />
+   ) : (
+    <div className="h-[700px] w-[490px] animate-pulse">
+     <div className="h-full w-full rounded-sm bg-slate-700"></div>
+    </div>
+   )}
   </div>
  )
 }

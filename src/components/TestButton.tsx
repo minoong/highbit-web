@@ -53,15 +53,9 @@ function TestButton() {
 
      <Tabs isFitted size="sm">
       <TabList>
-       <Tab>
-        <div className="font-extrabold hover:underline">원화</div>
-       </Tab>
-       <Tab>
-        <div className="font-extrabold hover:underline">보유</div>
-       </Tab>
-       <Tab>
-        <div className="font-extrabold hover:underline">관심</div>
-       </Tab>
+       <Tab className="font-extrabold hover:underline">원화</Tab>
+       <Tab className="font-extrabold hover:underline">보유</Tab>
+       <Tab className="font-extrabold hover:underline">관심</Tab>
       </TabList>
       <TabPanels>
        <TabPanel padding={0}>

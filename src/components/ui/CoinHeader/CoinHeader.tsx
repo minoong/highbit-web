@@ -30,7 +30,17 @@ function CoinHeader() {
   }
  }, [dispatch, searchParams, selectedMarket])
 
- if (!ticker || selectedMarket.length < 1) return null
+ useEffect(() => {
+  if (!marketKrwSymbol || !ticker) return
+  document.title = MarketUtils.getPricePretty(ticker.trade_price) + ' ' + marketKrwSymbol
+ }, [marketKrwSymbol, ticker])
+
+ if (!ticker || selectedMarket.length < 1)
+  return (
+   <div className="h-[144px] w-[990px] animate-pulse">
+    <div className="h-full w-full rounded-sm bg-slate-700"></div>
+   </div>
+  )
 
  const [krw, symbol] = selectedMarket[0].market.split('-')
  const change = MarketUtils.getChageColor('text-', ticker.change, '[#333333]')

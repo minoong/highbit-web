@@ -33,6 +33,7 @@
   "d3-format": "3.1.0",
   "d3-scale": "4.0.2",
   "d3-time-format": "4.1.0",
+  "dayjs": "1.11.7",
   "eslint": "8.33.0",
   "eslint-config-next": "13.1.6",
   "framer-motion": "10.0.1",
