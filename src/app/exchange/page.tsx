@@ -8,7 +8,7 @@ import CoinHeader from '~/components/ui/CoinHeader/CoinHeader'
 import DailyCoinPrice from '~/components/ui/DailyCoinPrice/DailyCoinPrice'
 import OrderBookContainer from '~/components/ui/OrderBook/OrderBookContainer'
 import RealTimeTrade from '~/components/ui/RealTimeTrade/RealTimeTrade'
-import TestButton from '~/components/TestButton'
+import Ticker from '~/components/ui/Ticker/Ticker'
 
 const theme = extendTheme({
  styles: {
@@ -20,10 +20,6 @@ const theme = extendTheme({
   }),
  },
 })
-
-export const metadata = {
- title: 'asdfjklsdjflk',
-}
 
 function ExchangePage() {
  return (
@@ -73,7 +69,7 @@ function ExchangePage() {
         </div>
        }
       >
-       <TestButton />
+       <Ticker />
       </Suspense>
      </div>
     </div>

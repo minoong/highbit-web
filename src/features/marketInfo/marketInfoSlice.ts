@@ -49,6 +49,12 @@ export const selectedMarketObjectSelector = createSelector(
  (selectedMarket, markets) => markets.filter((market) => market.market === selectedMarket),
 )
 
+export const symbolWithCurrencySelector = createSelector([selectedMarketSelector], (selectedMarket) => {
+ const [symbol, currency] = selectedMarket.split('-')
+
+ return [symbol, currency] as const
+})
+
 const marketInfoReducer = marketInfoSlice.reducer
 
 export default marketInfoReducer
