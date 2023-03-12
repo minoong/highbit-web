@@ -1,5 +1,6 @@
 import type { Change } from '~/types/apis/common'
 import classnames from 'classnames'
+import dayjs from 'dayjs'
 
 export const MarketUtils = {
  numberToHuman: function numberToHuman(volume: number | string) {
@@ -40,5 +41,26 @@ export const MarketUtils = {
    change === 'FALL' && 'trade-fall',
    change === 'EVEN' && evenColor,
   )}`
+ },
+ getDailyRageTimes: function getDailyRageTimes() {
+  const result = []
+  const currentTime = dayjs()
+  const marketOpenTime = dayjs().set('hour', 9).set('minute', 0).set('second', 0).set('millisecond', 0)
+
+  let gap = currentTime.diff(marketOpenTime, 'minute')
+  let repeat = 1
+
+  while (gap > 0) {
+   if (gap >= 200) {
+    gap -= 200
+    result.push([marketOpenTime.add(200 * repeat, 'minute'), 200] as const)
+    repeat++
+   } else {
+    result.push([marketOpenTime.add(200 * (repeat - 1) + gap, 'minute'), gap] as const)
+    gap -= gap
+   }
+  }
+
+  return result.map(([time, count]) => ({ time: time.toISOString(), count }))
  },
 }
