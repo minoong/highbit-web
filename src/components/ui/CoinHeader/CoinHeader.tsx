@@ -2,9 +2,13 @@
 
 import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 import { shallowEqual } from 'react-redux'
-import { marketSelected, selectedMarketObjectSelector } from '~/features/marketInfo/marketInfoSlice'
+import {
+ marketSelected,
+ selectedMarketObjectSelector,
+ symbolWithCurrencySelector,
+} from '~/features/marketInfo/marketInfoSlice'
 import { useAppDispatch, useAppSelector } from '~/hooks'
 import { MarketUtils } from '~/utils/marketUtils'
 
@@ -15,12 +19,9 @@ function CoinHeader() {
   state.tickers.tickers.find((ticker) => ticker.market === selectedMarket[0].market),
  )
  const dispatch = useAppDispatch()
- const marketKrwSymbol = useMemo(() => {
-  if (selectedMarket.length < 1) return
-  const [krw, symbol] = selectedMarket[0].market.split('-')
+ const [krw, symbol] = useAppSelector(symbolWithCurrencySelector)
 
-  return `${symbol}/${krw}`
- }, [selectedMarket])
+ const marketKrwSymbol = `${symbol}/${krw}`
 
  useEffect(() => {
   if (!selectedMarket || selectedMarket.length < 1) return
@@ -42,7 +43,6 @@ function CoinHeader() {
    </div>
   )
 
- const [krw, symbol] = selectedMarket[0].market.split('-')
  const change = MarketUtils.getChageColor('text-', ticker.change, '[#333333]')
 
  return (

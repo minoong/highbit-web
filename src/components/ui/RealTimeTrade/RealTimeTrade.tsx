@@ -1,20 +1,17 @@
 import React, { useState } from 'react'
 import Trade from '~/components/ui/RealTimeTrade/Trade'
 import VirtualScroll from '~/components/VirtualScroll/VirtualScroll'
-import { selectedMarketObjectSelector, selectedMarketSelector } from '~/features/marketInfo/marketInfoSlice'
+import { selectedMarketObjectSelector, symbolWithCurrencySelector } from '~/features/marketInfo/marketInfoSlice'
 import { useAppSelector } from '~/hooks'
 import useUpbit from '~/hooks/useUpbit.websocket'
 
 function RealTimeTrade() {
  const [y, setY] = useState<number>(0)
- const symbol = useAppSelector(selectedMarketSelector)
+ const [currency, coinCurrency] = useAppSelector(symbolWithCurrencySelector)
  const marketCodes = useAppSelector(selectedMarketObjectSelector)
 
  const { socketData = [] } = useUpbit(marketCodes, 'trade')
 
- console.log(socketData.length)
-
- const [currency, coinCurrency] = symbol.split('-')
  return (
   <div>
    <div className="flex h-[32px] items-center bg-[#F9FAFC] text-right text-xs font-medium text-[#666666]">
