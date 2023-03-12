@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { shallowEqual } from 'react-redux'
+import { DailyStockChart } from '~/components/ui/DailyChart/DailyChart'
 import {
  marketSelected,
  selectedMarketObjectSelector,
@@ -61,7 +62,7 @@ function CoinHeader() {
     </div>
    </div>
    <div className={`flex items-center pb-2 ${change} justify-between`}>
-    <div>
+    <div className="flex-1">
      <div className="gap-1 text-[32px] font-semibold">
       {MarketUtils.getPricePretty(ticker.trade_price)}
       <span className="pl-1 text-[14px] font-semibold">{krw}</span>
@@ -81,6 +82,11 @@ function CoinHeader() {
       <span className={`items-center ${ticker.change === 'EVEN' && 'm-2'}`}>
        {MarketUtils.getPricePretty(ticker.signed_change_price)}
       </span>
+     </div>
+    </div>
+    <div className="p-2">
+     <div className="h-[50px] w-[140px] bg-[#F9FAFB]">
+      <DailyStockChart dateTimeFormat="%Y-%m-%d %H:%M" openPrice={ticker.opening_price} />
      </div>
     </div>
     <div className="grid w-[490px] grid-cols-[245px_245px] justify-items-stretch text-xs text-trade-even">
