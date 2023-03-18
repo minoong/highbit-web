@@ -136,5 +136,5 @@ class DailyChart extends React.Component<StockChartProps> {
 }
 
 export const DailyStockChart = withDailyData()(
- withSize({ style: { minHeight: 500, maxHeight: 500 } })(withDeviceRatio()(DailyChart)),
+ withSize({ style: { minHeight: 50, maxHeight: 50 } })(withDeviceRatio()(DailyChart)),
 )

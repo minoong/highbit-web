@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
 import { shallowEqual } from 'react-redux'
 import GlobalNavLink from '~/components/GlobalNav/GlobalNavLink'
+import Auth from '~/components/ui/Auth/Auth'
 import { selectedMarketSelector } from '~/features/marketInfo/marketInfoSlice'
 import { clear } from '~/features/notice/noticeSlice'
 import { useAppDispatch, useAppSelector } from '~/hooks'
@@ -58,6 +59,9 @@ function GlobalNav() {
        </GlobalNavLink>
       </li>
      </ul>
+    </section>
+    <section>
+     <Auth />
     </section>
    </nav>
   </header>
