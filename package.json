@@ -36,6 +36,7 @@
   "dayjs": "1.11.7",
   "eslint": "8.33.0",
   "eslint-config-next": "13.1.6",
+  "firebase": "9.17.2",
   "framer-motion": "10.0.1",
   "hangul-js": "0.2.6",
   "lodash": "4.17.21",

@@ -19,7 +19,7 @@ function withDailyData() {
 
    if (!data || data.length < 1)
     return (
-     <div className="h-[500px] w-[990px] animate-pulse">
+     <div className="h-[50px] w-[140px] animate-pulse">
       <div className="h-full w-full rounded-sm bg-slate-700"></div>
      </div>
     )
