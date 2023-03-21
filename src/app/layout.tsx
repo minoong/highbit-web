@@ -3,6 +3,7 @@ import Footer from '~/components/Footer/Footer'
 import GlobalNav from '~/components/GlobalNav/GlobalNav'
 import ReactQueryProvider from '~/components/ReactQueryProiver/ReactQueryProvider'
 import ReduxProvider from '~/components/ReduxProvider/ReduxProvider'
+import Modals from '~/components/ui/Modals/Modals'
 import { authOptions } from '~/pages/api/auth/[...nextauth]'
 import SessionProvider from '~/components/SessionProvier'
 import './globals.css'
@@ -25,6 +26,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <main className="m-auto flex-auto px-4 pt-[68px]">{children}</main>
         <Footer />
        </div>
+       <Modals />
       </ReactQueryProvider>
      </SessionProvider>
     </ReduxProvider>

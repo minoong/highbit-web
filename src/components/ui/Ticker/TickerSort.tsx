@@ -34,7 +34,7 @@ function TickerSort() {
    </div>
    <div className="flex w-[88px] items-center justify-center gap-1">
     <Link
-     href={`${path}?code=${search.get('code')}`}
+     href={`${path}?code=${search?.get('code')}`}
      onClick={() => handleSort(sortType === 'tradePriceDesc' ? 'tradePriceAsc' : 'tradePriceDesc')}
     >
      현재가
@@ -56,7 +56,7 @@ function TickerSort() {
    </div>
    <div className="flex w-[78px] items-center justify-center gap-1">
     <Link
-     href={`${path}?code=${search.get('code')}`}
+     href={`${path}?code=${search?.get('code')}`}
      onClick={() => handleSort(sortType === 'changeRateDesc' ? 'changeRateAsc' : 'changeRateDesc')}
     >
      전일대비
@@ -78,7 +78,7 @@ function TickerSort() {
    </div>
    <div className="flex w-[88px] items-center justify-center gap-1">
     <Link
-     href={`${path}?code=${search.get('code')}`}
+     href={`${path}?code=${search?.get('code')}`}
      onClick={() => handleSort(sortType === 'tradePrice24hDesc' ? 'tradePrice24hAsc' : 'tradePrice24hDesc')}
     >
      거래대금
