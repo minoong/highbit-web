@@ -134,12 +134,12 @@ function useUpbit<T extends RequestType>(marketCodes: Market[], type: T) {
   return () => {
    if (socket.current && socket.current.readyState !== 0) {
     socket.current.close()
-    socket.current = null
-    setIsConnected(false)
-    setLoadingBuffer([])
-    setSocketData([])
-    buffer.current = []
    }
+   socket.current = null
+   setIsConnected(false)
+   setLoadingBuffer([])
+   setSocketData([])
+   buffer.current = []
   }
  }, [marketCodes, throttled, type])
 

@@ -8,6 +8,7 @@ import useUpbit from '~/hooks/useUpbit.websocket'
 
 function OrderBookContainer() {
  const selectedMarket = useAppSelector(selectedMarketObjectSelector, shallowEqual)
+
  const ticker = useAppSelector((state) =>
   state.tickers.tickers.find((ticker) => ticker.market === selectedMarket[0].market),
  )
