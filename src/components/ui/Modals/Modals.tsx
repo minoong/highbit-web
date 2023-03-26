@@ -11,7 +11,7 @@ function Modals() {
 
  return (
   <>
-   <div className="fixed top-0 left-0 h-screen w-screen select-none bg-black opacity-70" />
+   <div className="fixed top-0 left-0 z-40 h-screen w-screen select-none bg-black opacity-70" />
    {createPortal(
     modals.map(({ Component, props }, idx) => <Component key={idx} {...props} />),
     document.body,

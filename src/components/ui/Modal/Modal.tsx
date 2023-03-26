@@ -16,7 +16,7 @@ function Modal(props: Props) {
 
  return (
   <div
-   className={`fixed top-1/2 left-1/2 flex min-h-[180px] min-w-[350px] -translate-y-1/2 -translate-x-1/2 bg-white ${w} ${h}`}
+   className={`fixed top-1/2 left-1/2 z-50 flex min-h-[180px] min-w-[350px] -translate-y-1/2 -translate-x-1/2 bg-white ${w} ${h}`}
   >
    <section className="flex w-full flex-col gap-2 p-3">
     <header className="flex">{title}</header>
