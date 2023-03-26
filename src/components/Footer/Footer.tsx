@@ -4,7 +4,7 @@ import { FooterComponent } from '~/components/Footer/FooterMenu'
 
 function Footer() {
  return (
-  <footer className="mt-20 w-full bg-white py-5">
+  <footer className="mt-12 w-full bg-white py-5">
    <div className="m-auto flex min-w-[1200px] max-w-[1400px] justify-between p-4">
     <div>
      <Link
