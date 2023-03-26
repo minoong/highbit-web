@@ -60,8 +60,8 @@ function Ticker() {
      <TabPanels>
       <TabPanel padding={0}>
        <TickerSort />
-       <div className="virtualscroll sticky h-[865px]" onScroll={(e) => setY(e.currentTarget.scrollTop)}>
-        <VirtualScroll height={865} itemHeight={46} offsetY={y}>
+       <div className="virtualscroll sticky h-[899px]" onScroll={(e) => setY(e.currentTarget.scrollTop)}>
+        <VirtualScroll height={899} itemHeight={46} offsetY={y}>
          {tickers
           .filter((v) => v.market.startsWith('KRW-'))
           .map((ticker) => (

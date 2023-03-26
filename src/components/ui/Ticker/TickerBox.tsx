@@ -55,7 +55,7 @@ function TickerBox(props: Props) {
 
  return (
   <div
-   className="flex h-[46px] w-[400px] max-w-[400px] cursor-default flex-wrap items-center bg-white text-xs text-[#333333] hover:bg-[#f4f5f8]"
+   className="flex h-[46px] w-[400px] max-w-[400px] cursor-default flex-wrap items-center border-b bg-white text-xs text-[#333333] hover:bg-[#f4f5f8]"
    aria-hidden
    onClick={() => {
     linkRef.current?.click()

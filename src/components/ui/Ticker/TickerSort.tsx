@@ -25,7 +25,7 @@ function TickerSort() {
  }
 
  return (
-  <div className="flex h-[30px] w-[400px] max-w-[400px] cursor-default flex-wrap items-center bg-white text-center text-xs text-[#666666]">
+  <div className="flex h-[30px] w-[400px] max-w-[400px] cursor-default flex-wrap items-center border-b bg-[#F9FAFC] text-center text-xs text-[#666666]">
    <div className="flex w-[146px] items-center justify-center gap-1">
     <div>한글명</div>
     <div className="h-[10px] w-[7px]">
@@ -34,6 +34,7 @@ function TickerSort() {
    </div>
    <div className="flex w-[88px] items-center justify-center gap-1">
     <Link
+     className="hover:underline"
      href={`${path}?code=${search?.get('code')}`}
      onClick={() => handleSort(sortType === 'tradePriceDesc' ? 'tradePriceAsc' : 'tradePriceDesc')}
     >
@@ -56,6 +57,7 @@ function TickerSort() {
    </div>
    <div className="flex w-[78px] items-center justify-center gap-1">
     <Link
+     className="hover:underline"
      href={`${path}?code=${search?.get('code')}`}
      onClick={() => handleSort(sortType === 'changeRateDesc' ? 'changeRateAsc' : 'changeRateDesc')}
     >
@@ -78,6 +80,7 @@ function TickerSort() {
    </div>
    <div className="flex w-[88px] items-center justify-center gap-1">
     <Link
+     className="hover:underline"
      href={`${path}?code=${search?.get('code')}`}
      onClick={() => handleSort(sortType === 'tradePrice24hDesc' ? 'tradePrice24hAsc' : 'tradePrice24hDesc')}
     >

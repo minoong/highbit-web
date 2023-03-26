@@ -31,15 +31,20 @@ function ExchangePage() {
       <div className="h-[500px] bg-white">
        <MinutesStockChart dateTimeFormat="%Y-%m-%d %H:%M" />
       </div>
-      <Suspense
-       fallback={
-        <div className="h-[700px] w-[490px] animate-pulse">
-         <div className="h-full w-full rounded-sm bg-slate-700"></div>
-        </div>
-       }
-      >
-       <OrderBookContainer />
-      </Suspense>
+      <div className="grid grid-cols-[490px_490px] gap-2">
+       <Suspense
+        fallback={
+         <div className="h-[700px] w-[490px] animate-pulse">
+          <div className="h-full w-full rounded-sm bg-slate-700"></div>
+         </div>
+        }
+       >
+        <OrderBookContainer />
+       </Suspense>
+       <div className="h-[700px] w-[490px] animate-pulse">
+        <div className="h-full w-full rounded-sm bg-slate-700"></div>
+       </div>
+      </div>
       <article className="h-[436px] bg-white">
        <Tabs isFitted>
         <TabList height="45px">
