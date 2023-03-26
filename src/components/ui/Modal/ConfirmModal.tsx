@@ -8,12 +8,23 @@ interface Props {
  contents: React.ReactNode
  label?: string
  closeLabel?: string
+ width?: number
+ height?: number
  onConfirmClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => Promise<any>
  onCloseClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => Promise<any>
 }
 
 function ConfirmModal(props: Props) {
- const { title, contents, label = '확인', closeLabel = '취소', onConfirmClick, onCloseClick } = props
+ const {
+  title,
+  contents,
+  label = '확인',
+  closeLabel = '취소',
+  onConfirmClick,
+  onCloseClick,
+  width = 350,
+  height = 180,
+ } = props
 
  const dispatch = useAppDispatch()
 
@@ -35,7 +46,8 @@ function ConfirmModal(props: Props) {
 
  return (
   <Modal
-   height={500}
+   width={width}
+   height={height}
    title={title}
    contents={contents}
    footer={

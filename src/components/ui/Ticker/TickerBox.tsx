@@ -1,10 +1,15 @@
 import type { Market } from '~/types/apis/market'
 import type { Ticker } from '~/types/apis/ticker'
 import Link from 'next/link'
+import { signIn, useSession } from 'next-auth/react'
 import React, { useMemo, useRef } from 'react'
 import Star from '~/assets/svgs/star_fill.svg'
 import AloneCandle from '~/components/Chart/AloneCandle'
+import ConfirmModal from '~/components/ui/Modal/ConfirmModal'
 import Price from '~/components/ui/Ticker/Price'
+import { wrapperHandleOpenModal } from '~/features/modals/ModalsSlice'
+import { useAppDispatch } from '~/hooks'
+import { useCoinBookMark } from '~/hooks/useCoinBookMark'
 import { MarketUtils } from '~/utils/marketUtils'
 
 type Props = Pick<Market, 'market' | 'korean_name'> &
@@ -18,7 +23,7 @@ type Props = Pick<Market, 'market' | 'korean_name'> &
   | 'signed_change_rate'
   | 'signed_change_price'
   | 'acc_trade_price_24h'
- >
+ > & { isBookMark: boolean }
 
 function TickerBox(props: Props) {
  const {
@@ -32,9 +37,13 @@ function TickerBox(props: Props) {
   signed_change_rate,
   signed_change_price,
   acc_trade_price_24h,
+  isBookMark,
  } = props
 
  const linkRef = useRef<HTMLAnchorElement>(null)
+ const [, addCoinBookMark, removeCoinBookMark] = useCoinBookMark()
+ const { status } = useSession()
+ const dispatch = useAppDispatch()
 
  const marketKrwSymbol = useMemo(() => {
   const [krw, symbol] = market.split('-')
@@ -52,8 +61,25 @@ function TickerBox(props: Props) {
     linkRef.current?.click()
    }}
   >
-   <div className="flex w-[26px] justify-center pl-3">
-    <Star fill="#DDDDDD" width={15} />
+   <div
+    className="flex w-[26px] cursor-pointer justify-center pl-3"
+    onClick={(e) => {
+     e.stopPropagation()
+     if (status !== 'authenticated') {
+      dispatch(
+       wrapperHandleOpenModal(ConfirmModal, {
+        label: '로그인',
+        title: <h2 className="text-xl font-medium">로그인 안내</h2>,
+        contents: <div className="text-lg font-normal">관심코인을 추가하려면 로그인이 필요합니다.</div>,
+        onConfirmClick: () => signIn(),
+       }),
+      )
+     }
+
+     isBookMark ? removeCoinBookMark(market) : addCoinBookMark(market)
+    }}
+   >
+    <Star fill={isBookMark ? '#fbd100' : '#dddddd'} width={15} />
    </div>
    <div className="flex w-[26px] justify-center">
     <svg width={7} height={27}>
