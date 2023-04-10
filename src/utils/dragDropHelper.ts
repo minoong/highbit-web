@@ -5,7 +5,11 @@ export default function dragDropHelper({
  onDragEnd,
  stopPropagation,
 }: {
- onDragChange?: (deltaX: number, deltaY: number) => void
+ onDragChange?: (
+  deltaX: number,
+  deltaY: number,
+  startEvent: React.TouchEvent<HTMLElement> | React.MouseEvent<Element, MouseEvent>,
+ ) => void
  onDragEnd?: (deltaX: number, deltaY: number) => void
  stopPropagation?: boolean
 }) {
@@ -23,7 +27,7 @@ export default function dragDropHelper({
 
      const { deltaX, deltaY } = getDeltaAxis(touchEvent.touches[0], moveEvent.touches[0])
 
-     onDragChange?.(deltaX, deltaY)
+     onDragChange?.(deltaX, deltaY, touchEvent)
     }
 
     const touchEndHandler = (moveEvent: TouchEvent) => {
@@ -49,7 +53,7 @@ export default function dragDropHelper({
    const mouseMoveHandler = (mouseEvent: MouseEvent) => {
     const { deltaX, deltaY } = getDeltaAxis(clickEvent, mouseEvent)
 
-    onDragChange?.(deltaX, deltaY)
+    onDragChange?.(deltaX, deltaY, clickEvent)
    }
 
    const mouseUpHandler = (mouseEvent: MouseEvent) => {
