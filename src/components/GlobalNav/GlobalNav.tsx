@@ -9,6 +9,7 @@ import Auth from '~/components/ui/Auth/Auth'
 import { selectedMarketSelector } from '~/features/marketInfo/marketInfoSlice'
 import { clear } from '~/features/notice/noticeSlice'
 import { useAppDispatch, useAppSelector } from '~/hooks'
+import useWallet from '~/hooks/useWallet'
 
 function GlobalNav() {
  const pathname = usePathname()
@@ -22,6 +23,8 @@ function GlobalNav() {
 
   router.replace(`/exchange?code=${selectedMarket}`)
  }
+
+ useWallet()
 
  return (
   <header className="fixed z-50 w-full select-none bg-[#093687]">

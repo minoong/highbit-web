@@ -6,6 +6,7 @@ import marketsReducer from '~/features/markets/marketsSlice'
 import modalsReducer from '~/features/modals/ModalsSlice'
 import noticeReducer from '~/features/notice/noticeSlice'
 import tickersReducer from '~/features/tickers/tickersSlice'
+import walletReducer from '~/features/wallet/walletSlice'
 
 export const store = configureStore({
  reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
   tickers: tickersReducer,
   candles: candlesReducer,
   modals: modalsReducer,
+  wallet: walletReducer,
  },
  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 })
