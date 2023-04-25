@@ -3,6 +3,7 @@
 import { CacheProvider } from '@chakra-ui/next-js'
 import { ChakraProvider, extendTheme, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react'
 import { Suspense } from 'react'
+import Buy from '~/components/ui/Buy/Buy'
 import { MinutesStockChart } from '~/components/ui/CandleChart/stockChart'
 import CoinHeader from '~/components/ui/CoinHeader/CoinHeader'
 import DailyCoinPrice from '~/components/ui/DailyCoinPrice/DailyCoinPrice'
@@ -41,8 +42,32 @@ function ExchangePage() {
        >
         <OrderBookContainer />
        </Suspense>
-       <div className="h-[700px] w-[490px] animate-pulse">
+       {/* <div className="h-[700px] w-[490px] animate-pulse">
         <div className="h-full w-full rounded-sm bg-slate-700"></div>
+       </div> */}
+       <div className="h-[700px] w-[490px] bg-white">
+        <Tabs isFitted>
+         <TabList height="45px">
+          <Tab className="font-extrabold hover:underline" _focus={{ color: '#c84a31' }}>
+           매수
+          </Tab>
+          <Tab className="font-extrabold hover:underline">매도</Tab>
+          <Tab className="font-extrabold hover:underline" _focus={{ color: '#333333' }}>
+           간편주문
+          </Tab>
+          <Tab className="font-extrabold hover:underline" _focus={{ color: '#333333' }}>
+           거래내역
+          </Tab>
+         </TabList>
+         <TabPanels>
+          <TabPanel padding={0}>
+           <Buy />
+          </TabPanel>
+          <TabPanel padding={0}>
+           <Buy />
+          </TabPanel>
+         </TabPanels>
+        </Tabs>
        </div>
       </div>
       <article className="h-[436px] bg-white">
