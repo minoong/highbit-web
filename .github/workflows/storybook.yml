@@ -1,9 +1,6 @@
 name: Storybook Publish
 run-name: ${{ github.actor }}의 스토리북 배포
-on:
- push:
-  branches: ['main']
- workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
  storybook:
@@ -34,5 +31,6 @@ jobs:
 
    - name: publish to gh-pages branch
      uses: peaceiris/actions-gh-pages@v3
-     github_token: ${{ secrets.GH_ACTIONS_TOKEN }}
-     publish_dir: ./dist
+     with:
+      github_token: ${{ secrets.GH_ACTIONS_TOKEN }}
+      publish_dir: ./dist
