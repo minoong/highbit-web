@@ -7,6 +7,7 @@ module.exports = {
   '@storybook/addon-links',
   '@storybook/addon-essentials',
   '@storybook/addon-interactions',
+  'storybook-addon-next',
   'storybook-addon-next-router',
   {
    name: '@storybook/addon-postcss',
