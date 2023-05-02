@@ -7,7 +7,7 @@ function PriceInput() {
  return (
   <input
    type="text"
-   className="flex-1 border border-slate-500/50 py-1 px-3 text-right font-bold text-[#333]"
+   className="flex-1 border border-slate-500/50 px-3 py-1 text-right font-bold text-[#333]"
    value={String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
    onChange={(e) => {
     const removeCommaValue = e.target.value.replace(/[^0-9]/g, '')
