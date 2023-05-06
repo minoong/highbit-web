@@ -1,54 +1,67 @@
 import type { ForwardedRef, HTMLAttributes, MouseEvent } from 'react'
+import classNames from 'classnames'
 import { forwardRef } from 'react'
 import React from 'react'
 
 const Theme: Record<'text' | 'contained' | 'outlined', Record<string, HTMLAttributes<HTMLDivElement>['className']>> = {
  text: {
-  bgColorType: 'bg-transparent text-[#0062DF] border border-transparent',
+  bgColorType: 'bg-transparent border',
   disabled: 'bg-transparent text-[#A6A6A6] border border-transparent',
  },
  contained: {
-  bgColorType: 'bg-[#0062DF] text-white border border-[#0062DF]',
+  bgColorType: 'text-white border',
   disabled: 'bg-[#E0E0E0] text-[#A6A6A6] border border-[#E0E0E0]',
  },
  outlined: {
-  bgColorType: 'bg-transparent text-[#0062DF] border border-[#0062DF]',
+  bgColorType: 'bg-transparent border',
   disabled: 'bg-transparent text-[#A6A6A6] border border-[#E0E0E0]',
  },
 } as const
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
+ color?: 'primary' | 'secondary' | 'tertiary' | 'quinary'
  variant?: 'text' | 'contained' | 'outlined'
  rounded?: 'full' | 'sm' | 'md' | 'lg' | string
  full?: boolean
  alignment?: 'start' | 'center' | 'end'
  disabled?: boolean
+ className?: string
  onClick?: (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void
  children: React.ReactNode
 }
 
 function Button(props: Props, ref: ForwardedRef<HTMLButtonElement>) {
  const {
+  color = 'primary',
   variant = 'contained',
   rounded = '',
   full = false,
   alignment = 'center',
   disabled = false,
+  className = '',
   onClick,
   children,
-
   ...rest
  } = props
 
- const roundedCls = rounded ? `rounded-${rounded}` : ''
- const alignmentCls = `justify-${alignment}`
+ const cls = classNames(
+  !disabled && color && variant === 'text' && `text-trade-btn-${color} border-transparent`,
+  !disabled && color && variant === 'contained' && `bg-trade-btn-${color} border-trade-btn-${color}`,
+  !disabled && color && variant === 'outlined' && `text-trade-btn-${color} border-trade-btn-${color}`,
+  !disabled ? 'hover:brightness-110' : 'hover:brightness-90',
+  disabled && Theme[variant].disabled,
+  disabled && 'cursor-not-allowed [&>*]:cursor-not-allowed',
+  rounded && `rounded-${rounded}`,
+  full && 'w-full',
+  `justify-${alignment}`,
+  className,
+ )
+
  return (
   <button
    ref={ref}
    onClick={onClick}
-   className={`${Theme[variant].bgColorType} ${
-    disabled ? Theme[variant].disabled + ' cursor-not-allowed' : ''
-   } px-2 py-1 ${roundedCls} transition hover:brightness-110 ${full ? 'w-full' : ''} flex ${alignmentCls} font-normal`}
+   className={`${Theme[variant].bgColorType} ${cls} flex px-2 py-1 font-normal transition`}
    disabled={disabled}
    {...rest}
   >
