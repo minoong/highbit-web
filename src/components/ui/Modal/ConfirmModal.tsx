@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '~/components/atoms/Button/Button'
 import Modal from '~/components/ui/Modal/Modal'
 import { closeModal } from '~/features/modals/ModalsSlice'
 import { useAppDispatch } from '~/hooks'
@@ -51,19 +52,15 @@ function ConfirmModal(props: Props) {
    title={title}
    contents={contents}
    footer={
-    <div className="flex w-full justify-end gap-1 text-lg">
-     <button
-      className="rounded-sm bg-white px-8 text-blue-700/90 ring-1 ring-blue-700/90 hover:brightness-125"
-      onClick={handleClose}
-     >
-      {closeLabel}
-     </button>
-     <button
-      className="rounded-sm bg-blue-700/90 px-8 text-white ring-1 ring-blue-700/90 hover:brightness-125"
-      onClick={handleConfirm}
-     >
-      {label}
-     </button>
+    <div className="flex w-full justify-end">
+     <div className="flex w-1/2 gap-1">
+      <Button variant="outlined" className="basis-1/2 py-1 text-lg font-bold" onClick={handleClose}>
+       {closeLabel}
+      </Button>
+      <Button className="basis-1/2 py-1 text-lg font-bold" onClick={handleConfirm}>
+       {label}
+      </Button>
+     </div>
     </div>
    }
   />
