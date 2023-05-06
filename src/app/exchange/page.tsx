@@ -48,10 +48,20 @@ function ExchangePage() {
        <div className="h-[700px] w-[490px] bg-white">
         <Tabs isFitted>
          <TabList height="45px">
-          <Tab className="font-extrabold hover:underline" _focus={{ color: '#c84a31' }}>
+          <Tab
+           className="font-extrabold hover:underline"
+           _focus={{ color: '#c84a31', borderBottom: '1px solid #c84a31' }}
+           _selected={{ color: '#c84a31', borderBottom: '1px solid #c84a31' }}
+          >
            매수
           </Tab>
-          <Tab className="font-extrabold hover:underline">매도</Tab>
+          <Tab
+           className="font-extrabold hover:underline"
+           _focus={{ color: '#1261c4', borderBottom: '1px solid #1261c4' }}
+           _selected={{ color: '#1261c4', borderBottom: '1px solid #1261c4' }}
+          >
+           매도
+          </Tab>
           <Tab className="font-extrabold hover:underline" _focus={{ color: '#333333' }}>
            간편주문
           </Tab>

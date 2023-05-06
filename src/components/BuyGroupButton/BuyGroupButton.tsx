@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '~/components/atoms/Button/Button'
 
 interface Props {
  type: 'buy' | 'cell'
@@ -14,14 +15,14 @@ function BuyGroupButton(props: Props) {
  return (
   <div className="grid grid-cols-3 gap-2 font-bold text-white">
    <div>
-    <button type="button" className="w-full bg-[#95959E] py-3 hover:underline" onClick={onInitClick}>
+    <Button color="quinary" full className="py-3 hover:underline" onClick={onInitClick}>
      초기화
-    </button>
+    </Button>
    </div>
    <div className="col-span-2">
-    <button type="button" className={`w-full ${typeColor} py-3 hover:underline`} onClick={onSubmitClick}>
+    <Button full className={`w-full ${typeColor} py-3 hover:underline`} onClick={onSubmitClick}>
      {type === 'buy' ? '매수' : '매도'}
-    </button>
+    </Button>
    </div>
   </div>
  )

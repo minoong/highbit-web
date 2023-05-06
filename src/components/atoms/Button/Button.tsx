@@ -26,6 +26,7 @@ interface Props extends HTMLAttributes<HTMLButtonElement> {
  alignment?: 'start' | 'center' | 'end'
  disabled?: boolean
  className?: string
+ type?: 'button' | 'submit' | 'reset'
  onClick?: (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void
  children: React.ReactNode
 }
@@ -39,6 +40,7 @@ function Button(props: Props, ref: ForwardedRef<HTMLButtonElement>) {
   alignment = 'center',
   disabled = false,
   className = '',
+  type = 'button',
   onClick,
   children,
   ...rest
@@ -61,9 +63,10 @@ function Button(props: Props, ref: ForwardedRef<HTMLButtonElement>) {
   <button
    ref={ref}
    onClick={onClick}
-   className={`${Theme[variant].bgColorType} ${cls} flex px-2 py-1 font-normal transition`}
+   className={`flex transition ${Theme[variant].bgColorType} ${cls}`}
    disabled={disabled}
    {...rest}
+   type={type}
   >
    {children}
   </button>
