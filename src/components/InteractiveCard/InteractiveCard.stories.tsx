@@ -1,6 +1,8 @@
 /* eslint-disable react/destructuring-assignment */
 import type { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import React from 'react'
+
 import InteractiveCard from '~/components/InteractiveCard/InteractiveCard'
 
 export default {

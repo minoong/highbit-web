@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Button from '~/components/atoms/Button/Button'
 import Modal from '~/components/ui/Modal/Modal'
 import { closeModal } from '~/features/modals/ModalsSlice'

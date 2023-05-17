@@ -1,5 +1,6 @@
 import { signIn } from 'next-auth/react'
 import React from 'react'
+
 import Button from '~/components/atoms/Button/Button'
 
 function SignIn() {

@@ -1,8 +1,10 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '~/store/store'
 import type { Market } from '~/types/apis/market'
+
 import { createSelector } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
+
+import type { RootState } from '~/store/store'
 
 export type MarketsState = {
  markets: Market[]

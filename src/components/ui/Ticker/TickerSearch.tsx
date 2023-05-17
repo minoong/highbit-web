@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { IoIosClose } from 'react-icons/io'
 import { debounceTime, distinctUntilChanged, map } from 'rxjs'
+
 import { tickerSearch } from '~/features/tickers/tickersSlice'
 import { useAppDispatch } from '~/hooks'
 

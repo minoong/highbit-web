@@ -4,7 +4,9 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
 import type { Entities } from '~/features/candles/candlesSlice'
+
 import type { AlternatingFillAreaSeriesProps } from 'react-financial-charts'
+
 import React from 'react'
 import { AlternatingFillAreaSeries } from 'react-financial-charts'
 import {
@@ -16,6 +18,7 @@ import {
  withDeviceRatio,
  withSize,
 } from 'react-financial-charts'
+
 import withDailyData from '~/components/ui/DailyChart/withDailyData'
 
 interface StockChartProps extends Partial<AlternatingFillAreaSeriesProps> {

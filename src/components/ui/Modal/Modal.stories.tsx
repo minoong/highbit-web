@@ -1,7 +1,10 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import React from 'react'
 import { Provider } from 'react-redux'
+
 import Modal from '~/components/ui/Modal/Modal'
+
 import { store } from '~/store/store'
 
 export default {

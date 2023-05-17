@@ -21,6 +21,26 @@
       "position": "before"
      },
      {
+      "pattern": "~/pages/*",
+      "group": "internal",
+      "position": "after"
+     },
+     {
+      "pattern": "~/components/*",
+      "group": "internal",
+      "position": "after"
+     },
+     {
+      "pattern": "~/store/*",
+      "group": "internal",
+      "position": "after"
+     },
+     {
+      "pattern": "~/features/*",
+      "group": "internal",
+      "position": "after"
+     },
+     {
       "pattern": "~/hooks/*",
       "group": "internal",
       "position": "after"
@@ -31,16 +51,12 @@
       "position": "after"
      },
      {
-      "pattern": "~/pages/*",
-      "group": "internal",
-      "position": "after"
-     },
-     {
-      "pattern": "~/components/*",
+      "pattern": "~/types/*",
       "group": "internal",
       "position": "after"
      }
     ],
+    "newlines-between": "always",
     "alphabetize": {
      "order": "asc",
      "caseInsensitive": true

@@ -1,5 +1,7 @@
 import type { NextRequest } from 'next/server'
+
 import { NextResponse } from 'next/server'
+
 import { store } from '~/store/store'
 
 export function middleware(req: NextRequest) {

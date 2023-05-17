@@ -1,8 +1,10 @@
 'use client'
 
 import type { Entities } from '~/features/candles/candlesSlice'
+
 import { format } from 'd3-format'
 import React from 'react'
+
 import useDailyRageTimesQuery from '~/hooks/queries/useDailyRageTimesQuery'
 
 interface WithCandleDataProps {

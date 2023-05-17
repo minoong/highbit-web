@@ -1,15 +1,19 @@
 import type { Market } from '~/types/apis/market'
 import type { Ticker } from '~/types/apis/ticker'
+
 import Link from 'next/link'
 import { signIn, useSession } from 'next-auth/react'
 import React, { useMemo, useRef } from 'react'
+
 import Star from '~/assets/svgs/star_fill.svg'
 import AloneCandle from '~/components/Chart/AloneCandle'
 import ConfirmModal from '~/components/ui/Modal/ConfirmModal'
 import Price from '~/components/ui/Ticker/Price'
 import { wrapperHandleOpenModal } from '~/features/modals/ModalsSlice'
 import { useAppDispatch } from '~/hooks'
+
 import { useCoinBookMark } from '~/hooks/useCoinBookMark'
+
 import { MarketUtils } from '~/utils/marketUtils'
 
 type Props = Pick<Market, 'market' | 'korean_name'> &
@@ -56,7 +60,6 @@ function TickerBox(props: Props) {
  return (
   <div
    className="flex h-[46px] w-[400px] max-w-[400px] cursor-default flex-wrap items-center border-b bg-white text-xs text-[#333333] hover:bg-[#f4f5f8]"
-   aria-hidden
    onClick={() => {
     linkRef.current?.click()
    }}

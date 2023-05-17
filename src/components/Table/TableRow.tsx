@@ -1,4 +1,5 @@
 import type { ComponentProps, PropsWithChildren } from 'react'
+
 import { useTableContext } from '~/components/Table/TableContext'
 
 type Props = PropsWithChildren<ComponentProps<'tr'>>

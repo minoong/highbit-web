@@ -2,6 +2,7 @@ import type { Market } from '~/types/apis/market'
 import type { Orderbook } from '~/types/apis/orderbook.socket'
 import type { TickerSocket } from '~/types/apis/ticker.socket'
 import type { Trade } from '~/types/apis/trade.socket'
+
 import { cloneDeep, throttle } from 'lodash'
 import { useCallback, useEffect, useRef, useState } from 'react'
 

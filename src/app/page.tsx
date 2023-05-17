@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+
 import InteractiveCard from '~/components/InteractiveCard/InteractiveCard'
 
 export const metadata: Metadata = {

@@ -1,4 +1,5 @@
 import type { Change } from '~/types/apis/common'
+
 import { scaleLinear } from 'd3-scale'
 import flow from 'lodash/flow'
 import React, { useMemo } from 'react'

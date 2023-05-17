@@ -1,10 +1,14 @@
 import type { SerializedError } from '@reduxjs/toolkit'
-import type { RootState } from '~/store/store'
 import type { CandleMinute } from '~/types/apis/candle'
-import type { Candle } from '~/types/common'
+
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
+
 import { tickersUpdate } from '~/features/tickers/tickersSlice'
+
+import type { RootState } from '~/store/store'
+
+import type { Candle } from '~/types/common'
 
 export type Entities<T = number> = Candle<T> & {
  time: {

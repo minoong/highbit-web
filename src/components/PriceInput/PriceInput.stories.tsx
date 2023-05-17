@@ -1,5 +1,7 @@
 import type { ComponentMeta } from '@storybook/react'
+
 import React, { useState } from 'react'
+
 import { PriceGroup } from '~/components/PriceInput/PriceGroup'
 
 import '../../app/globals.css'

@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+
 import candlesReducer from '~/features/candles/candlesSlice'
 import counterReducer from '~/features/counter/counterSlice'
 import marketInfoReducer from '~/features/marketInfo/marketInfoSlice'

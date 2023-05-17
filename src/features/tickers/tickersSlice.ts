@@ -1,10 +1,12 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '~/store/store'
 import type { Ticker } from '~/types/apis/ticker'
 import type { TickerSocket } from '~/types/apis/ticker.socket'
+
 import { createSelector } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 import Hangul from 'hangul-js'
+
+import type { RootState } from '~/store/store'
 
 export type TickerSortType =
  | 'tradePrice24hDesc'

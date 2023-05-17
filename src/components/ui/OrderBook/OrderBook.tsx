@@ -1,6 +1,7 @@
 'use client'
 
 import type { Orderbook } from '~/types/apis/orderbook.socket'
+
 import OrderBookLoom from '~/components/ui/OrderBook/OrderBookLoom'
 import OrderBookPrice from '~/components/ui/OrderBook/OrderBookPrice'
 import OrderBookRow from '~/components/ui/OrderBook/OrderBookRow'
