@@ -1,6 +1,9 @@
 import type { PaginationButtonProps } from '~/components/Pagination/PaginationButton'
+
 import type { ComponentProps, PropsWithChildren, ReactNode } from 'react'
+
 import PaginationButton from '~/components/Pagination/PaginationButton'
+
 import { range } from '~/utils/range'
 
 export type PaginationProps = PropsWithChildren<Pagination>

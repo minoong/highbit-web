@@ -1,5 +1,6 @@
 import type { Market } from '~/types/apis/market'
 import type { UniversalUseQueryOptions } from '~/types/react-query/universal'
+
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 

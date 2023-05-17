@@ -1,8 +1,11 @@
 import type { Ticker } from '~/types/apis/ticker'
 import type { UniversalUseQueryOptions } from '~/types/react-query/universal'
+
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
+
 import { marketsForLocationSelector } from '~/features/markets/marketsSlice'
+
 import { useAppSelector } from '~/hooks/useAppSelector'
 
 async function getTickers(symbols: string) {

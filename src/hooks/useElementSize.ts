@@ -1,5 +1,6 @@
-import type { Any } from '~/types/common'
 import { useCallback, useEffect, useRef, useState } from 'react'
+
+import type { Any } from '~/types/common'
 
 function useElementSize<T extends HTMLElement = Any>(callback?: (entry: DOMRect) => void) {
  const frameId = useRef<number>(0)

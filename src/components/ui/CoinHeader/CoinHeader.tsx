@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { shallowEqual } from 'react-redux'
+
 import { DailyStockChart } from '~/components/ui/DailyChart/DailyChart'
 import {
  marketSelected,
@@ -11,6 +12,7 @@ import {
  symbolWithCurrencySelector,
 } from '~/features/marketInfo/marketInfoSlice'
 import { useAppDispatch, useAppSelector } from '~/hooks'
+
 import { MarketUtils } from '~/utils/marketUtils'
 
 function CoinHeader() {

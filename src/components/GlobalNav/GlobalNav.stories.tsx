@@ -1,7 +1,10 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import React from 'react'
 import { Provider } from 'react-redux'
+
 import GlobalNav from '~/components/GlobalNav/GlobalNav'
+
 import { store } from '~/store/store'
 
 import '../../app/globals.css'

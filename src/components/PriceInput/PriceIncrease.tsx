@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { usePriceInputContext } from '~/components/PriceInput/PriceInputContext'
 
 function PriceIncrease() {

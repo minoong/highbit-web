@@ -1,9 +1,11 @@
 'use client'
 
 import { shallowEqual } from 'react-redux'
+
 import OrderBook from '~/components/ui/OrderBook/OrderBook'
 import { selectedMarketObjectSelector } from '~/features/marketInfo/marketInfoSlice'
 import { useAppSelector } from '~/hooks'
+
 import useUpbit from '~/hooks/useUpbit.websocket'
 
 function OrderBookContainer() {

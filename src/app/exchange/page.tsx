@@ -3,6 +3,7 @@
 import { CacheProvider } from '@chakra-ui/next-js'
 import { ChakraProvider, extendTheme, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react'
 import { Suspense } from 'react'
+
 import Buy from '~/components/ui/Buy/Buy'
 import { MinutesStockChart } from '~/components/ui/CandleChart/stockChart'
 import CoinHeader from '~/components/ui/CoinHeader/CoinHeader'

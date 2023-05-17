@@ -4,11 +4,13 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import React from 'react'
 import { shallowEqual } from 'react-redux'
+
 import GlobalNavLink from '~/components/GlobalNav/GlobalNavLink'
 import Auth from '~/components/ui/Auth/Auth'
 import { selectedMarketSelector } from '~/features/marketInfo/marketInfoSlice'
 import { clear } from '~/features/notice/noticeSlice'
 import { useAppDispatch, useAppSelector } from '~/hooks'
+
 import useWallet from '~/hooks/useWallet'
 
 function GlobalNav() {

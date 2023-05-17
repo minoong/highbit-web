@@ -1,9 +1,13 @@
 import type { CandleMinute } from '~/types/apis/candle'
 import type { UniversalUseQueryOptions } from '~/types/react-query/universal'
+
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
+
 import { selectedMarketSelector } from '~/features/marketInfo/marketInfoSlice'
+
 import { useAppSelector } from '~/hooks/useAppSelector'
+
 import { MarketUtils } from '~/utils/marketUtils'
 
 export async function getDailyRageTimes(symbol: string) {

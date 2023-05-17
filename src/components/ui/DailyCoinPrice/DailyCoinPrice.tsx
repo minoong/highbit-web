@@ -1,9 +1,12 @@
 import { useState } from 'react'
+
 import VirtualScroll from '~/components/VirtualScroll/VirtualScroll'
 import { selectedMarketSelector } from '~/features/marketInfo/marketInfoSlice'
 import { useAppSelector } from '~/hooks'
 import { useDailyCoinPriceQuery } from '~/hooks/queries/useDailyCoinPriceQuery'
+
 import useIntersectionObserver from '~/hooks/useIntersectionObserver'
+
 import { MarketUtils } from '~/utils/marketUtils'
 
 function DailyCoinPrice() {

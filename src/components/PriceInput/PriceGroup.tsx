@@ -1,6 +1,9 @@
 import type { PriceInputContextType } from '~/components/PriceInput/PriceInputContext'
+
 import type { PropsWithChildren } from 'react'
+
 import React from 'react'
+
 import PriceDecrease from '~/components/PriceInput/PriceDecrease'
 import PriceIncrease from '~/components/PriceInput/PriceIncrease'
 import PriceInput from '~/components/PriceInput/PriceInput'

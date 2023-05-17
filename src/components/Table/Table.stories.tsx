@@ -1,5 +1,7 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import React from 'react'
+
 import { Table } from '~/components/Table'
 
 import '../../app/globals.css'

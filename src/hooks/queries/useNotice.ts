@@ -1,7 +1,9 @@
 import type { NoticeResponse } from '~/types/apis/notice'
 import type { UniversalUseQueryOptions } from '~/types/react-query/universal'
+
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
+
 import { useAppSelector } from '~/hooks/useAppSelector'
 
 async function getNotice(offset: number) {

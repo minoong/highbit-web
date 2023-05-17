@@ -1,5 +1,7 @@
 import type { TableContextType } from '~/components/Table/TableContext'
+
 import type { ComponentProps, PropsWithChildren } from 'react'
+
 import { TableContext } from '~/components/Table/TableContext'
 
 type Props = PropsWithChildren<ComponentProps<'table'> & TableContextType> & {

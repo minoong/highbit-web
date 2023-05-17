@@ -4,6 +4,7 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable class-methods-use-this */
 import type { Entities } from '~/features/candles/candlesSlice'
+
 import { format } from 'd3-format'
 import { timeFormat } from 'd3-time-format'
 import React from 'react'
@@ -32,6 +33,7 @@ import {
  withDeviceRatio,
  withSize,
 } from 'react-financial-charts'
+
 import witchCandleData from '~/components/ui/CandleChart/witchCandleData'
 
 interface StockChartProps {

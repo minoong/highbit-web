@@ -1,5 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
+
 import type { ComponentProps, FunctionComponent } from 'react'
+
 import { createAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 

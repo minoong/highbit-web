@@ -1,4 +1,5 @@
 import type { DailyCandle } from '~/types/apis/candle'
+
 import { useInfiniteQuery } from '@tanstack/react-query'
 import axios from 'axios'
 

@@ -1,8 +1,11 @@
 'use client'
 
-import type { RootState } from '~/store/store'
 import { useDispatch } from 'react-redux'
+
 import { useAppSelector } from '~/hooks'
+
+import type { RootState } from '~/store/store'
+
 import { decrement, increment } from './counterSlice'
 
 export function Counter() {

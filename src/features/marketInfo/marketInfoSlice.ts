@@ -1,7 +1,9 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '~/store/store'
+
 import { createSelector } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
+
+import type { RootState } from '~/store/store'
 
 type KRW = 'KRW'
 type BTC = 'BTC'

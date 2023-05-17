@@ -1,8 +1,10 @@
 import { collection, doc, documentId, onSnapshot, query, setDoc, where } from 'firebase/firestore'
 import { useSession } from 'next-auth/react'
 import { useEffect } from 'react'
+
 import { setCurrencyMoney } from '~/features/wallet/walletSlice'
 import { db } from '~/firebase'
+
 import { useAppDispatch } from '~/hooks/useAppDispatch'
 
 export default function useWallet() {

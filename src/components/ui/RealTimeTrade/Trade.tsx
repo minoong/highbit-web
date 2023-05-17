@@ -1,7 +1,9 @@
 import clsx from 'clsx'
 import dayjs from 'dayjs'
 import React from 'react'
+
 import { Trade } from '~/types/apis/trade.socket'
+
 import { MarketUtils } from '~/utils/marketUtils'
 
 interface Props {

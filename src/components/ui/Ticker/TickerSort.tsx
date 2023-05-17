@@ -1,10 +1,12 @@
 'use client'
 
 import type { TickerSortType } from '~/features/tickers/tickersSlice'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useSearchParams } from 'next/navigation'
 import React from 'react'
+
 import { tickerSort } from '~/features/tickers/tickersSlice'
 import { useAppDispatch, useAppSelector } from '~/hooks'
 

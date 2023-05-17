@@ -1,5 +1,7 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react'
+
 import React from 'react'
+
 import RangeSlider from '~/components/RangeSlider/RangeSlider'
 
 import '../../app/globals.css'

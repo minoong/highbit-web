@@ -1,5 +1,7 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react'
+
 import React from 'react'
+
 import Button from '~/components/atoms/Button/Button'
 
 export default {
