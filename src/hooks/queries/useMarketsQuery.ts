@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 
 async function getMarkets() {
- const { data } = await axios.get<Market[]>(`https://api.upbit.com/v1/market/all`)
+ const { data } = await axios.get<Market[]>(`/api/upbit/v1/market/all`)
 
  return data
 }

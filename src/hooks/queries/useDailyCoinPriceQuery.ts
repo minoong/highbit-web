@@ -8,7 +8,7 @@ export function useDailyCoinPriceQuery(symbol: string) {
   queryKey: ['dailyCoinPrice', symbol],
   queryFn: async ({ pageParam = new Date().toISOString() }) => {
    const { data } = await axios.get<DailyCandle[]>(
-    `https://api.upbit.com/v1/candles/days?market=${symbol}&to=${pageParam}&count=15`,
+    `/api/upbit/v1/candles/days?market=${symbol}&to=${pageParam}&count=15`,
    )
 
    return data

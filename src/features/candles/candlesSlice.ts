@@ -46,7 +46,7 @@ export const fetchUserById = createAsyncThunk<
    : new Date(getState().candles.entities[0].date).toISOString() || new Date().toISOString()
 
  const response = await axios
-  .get<CandleMinute[]>(`https://api.upbit.com/v1/candles/minutes/1?market=${symbols}&to=${datetime}&count=200`)
+  .get<CandleMinute[]>(`/api/upbit/v1/candles/minutes/1?market=${symbols}&to=${datetime}&count=200`)
   .then(({ data }) =>
    data.reverse().map((candle) => ({
     close: candle.trade_price,

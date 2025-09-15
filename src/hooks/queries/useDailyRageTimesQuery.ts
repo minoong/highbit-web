@@ -13,7 +13,7 @@ import { MarketUtils } from '~/utils/marketUtils'
 export async function getDailyRageTimes(symbol: string) {
  const result = await Promise.all(
   MarketUtils.getDailyRageTimes().map(({ time, count }) =>
-   axios.get<CandleMinute[]>(`https://api.upbit.com/v1/candles/minutes/1?market=${symbol}&to=${time}&count=${count}`),
+   axios.get<CandleMinute[]>(`/api/upbit/v1/candles/minutes/1?market=${symbol}&to=${time}&count=${count}`),
   ),
  ).then((values) =>
   values.map((v) =>

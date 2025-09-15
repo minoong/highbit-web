@@ -9,7 +9,7 @@ import { marketsForLocationSelector } from '~/features/markets/marketsSlice'
 import { useAppSelector } from '~/hooks/useAppSelector'
 
 async function getTickers(symbols: string) {
- const { data } = await axios.get<Ticker[]>(`https://api.upbit.com/v1/ticker?markets=${symbols}`)
+ const { data } = await axios.get<Ticker[]>(`/api/upbit/v1/ticker?markets=${symbols}`)
 
  return data
 }
