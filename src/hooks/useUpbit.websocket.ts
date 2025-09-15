@@ -88,7 +88,21 @@ function useUpbit<T extends RequestType>(marketCodes: Market[], type: T) {
   }
 
   function connect() {
-   socket.current = new WebSocket('wss://api.upbit.com/websocket/v1')
+   // Vercel 환경에서는 fallback 사용
+   const isProduction = process.env.NODE_ENV === 'production'
+   const isVercel = process.env.VERCEL === '1'
+
+   const wsUrl = 'wss://api.upbit.com/websocket/v1'
+
+   // Vercel 배포 환경에서는 폴링으로 대체하거나 프록시 사용
+   if (isProduction && isVercel) {
+    // WebSocket 대신 폴링 사용하도록 early return
+    console.warn('WebSocket not supported in Vercel environment, falling back to polling')
+    setIsConnected(false)
+    return
+   }
+
+   socket.current = new WebSocket(wsUrl)
    socket.current.binaryType = 'arraybuffer'
 
    socket.current.onopen = () => {

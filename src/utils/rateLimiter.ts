@@ -82,10 +82,10 @@ class RateLimiter {
 }
 
 // Upbit API용 전역 rate limiter 인스턴스
-export const upbitRateLimiter = new RateLimiter(500) // 500ms 간격
+export const upbitRateLimiter = new RateLimiter(100) // 100ms 간격
 
 // 다른 API용 rate limiter 생성 함수
-export const createRateLimiter = (minInterval = 500) => {
+export const createRateLimiter = (minInterval = 100) => {
  return new RateLimiter(minInterval)
 }
 

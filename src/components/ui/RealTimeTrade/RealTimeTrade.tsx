@@ -5,14 +5,14 @@ import VirtualScroll from '~/components/VirtualScroll/VirtualScroll'
 import { selectedMarketObjectSelector, symbolWithCurrencySelector } from '~/features/marketInfo/marketInfoSlice'
 import { useAppSelector } from '~/hooks'
 
-import useUpbit from '~/hooks/useUpbit.websocket'
+import useUpbitData from '~/hooks/useUpbitData'
 
 function RealTimeTrade() {
  const [y, setY] = useState<number>(0)
  const [currency, coinCurrency] = useAppSelector(symbolWithCurrencySelector)
  const marketCodes = useAppSelector(selectedMarketObjectSelector)
 
- const { socketData = [] } = useUpbit(marketCodes, 'trade')
+ const { socketData = [] } = useUpbitData(marketCodes, 'trade')
 
  return (
   <div>

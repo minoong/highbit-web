@@ -6,7 +6,7 @@ import OrderBook from '~/components/ui/OrderBook/OrderBook'
 import { selectedMarketObjectSelector } from '~/features/marketInfo/marketInfoSlice'
 import { useAppSelector } from '~/hooks'
 
-import useUpbit from '~/hooks/useUpbit.websocket'
+import useUpbitData from '~/hooks/useUpbitData'
 
 function OrderBookContainer() {
  const selectedMarket = useAppSelector(selectedMarketObjectSelector, shallowEqual)
@@ -15,7 +15,7 @@ function OrderBookContainer() {
   state.tickers.tickers.find((ticker) => ticker.market === selectedMarket[0].market),
  )
 
- const { socketData } = useUpbit(selectedMarket, 'orderbook')
+ const { socketData } = useUpbitData(selectedMarket, 'orderbook')
 
  return (
   <div className="w-[490px]">

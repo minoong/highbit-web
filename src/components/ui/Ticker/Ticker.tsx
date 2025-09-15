@@ -15,7 +15,7 @@ import useMarketsQuery from '~/hooks/queries/useMarketsQuery'
 import useTickersQuery from '~/hooks/queries/useTickersQuery'
 
 import { useCoinBookMark } from '~/hooks/useCoinBookMark'
-import useUpbit from '~/hooks/useUpbit.websocket'
+import useUpbitData from '~/hooks/useUpbitData'
 
 function Ticker() {
  const dispatch = useAppDispatch()
@@ -41,7 +41,7 @@ function Ticker() {
   },
  })
 
- const { socketData } = useUpbit(markets, 'ticker')
+ const { socketData } = useUpbitData(markets, 'ticker')
  const [coinBookMarkList] = useCoinBookMark()
 
  useEffect(() => {
